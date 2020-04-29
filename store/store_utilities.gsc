@@ -32,7 +32,8 @@ tryBuying( item, type, price)
         self.score -= price;
         if(type == "weapon")
         {
-            self.isBuying = true;
+            level.packRB.user = self.name;
+            self.isBuying     = true;
             self clearLowerMessage("getGun");
             level.packRB.isBusy = true;
             level.wep MoveTo( level.packRB.origin + (0,0,30), 2 );
@@ -56,6 +57,7 @@ tryBuying( item, type, price)
             self.isBuying         = false;
             wait 3;
             level.packRB.isBusy = false;
+            level.packRB.user   = undefined;
         }
             
         if(type == "ammo")
@@ -88,8 +90,7 @@ tryBuying( item, type, price)
             setPerkEdit(item);
         }
         
-
+        self clearCustomMessage("tst");
     }
-    self clearCustomMessage("tst");
     else self IPrintLnbold( "^1You don't have enough money!" );
 }

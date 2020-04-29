@@ -48,7 +48,7 @@ MysteryBox()
             else if(distance(self.origin, level.packRB.origin) <80 && level.packRB.isBusy == true)
             {
                 
-                self setLowerMessage("getGun", "Sorry, this box is currently in use!",undefined,0);
+                self setLowerMessage("getGun", "Sorry, this box is currently in use by! ^3"+level.packRB.user,undefined,0);
             }
             else if(distance(sef.origin, level.packRB.origin) > 80)
             {
