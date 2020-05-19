@@ -1,7 +1,7 @@
-spawnPerkBox(origin, index, perk, name)
+spawnPerkBox(origin,angles, index, perk, name)
 {
     level.perkBox[index]       = spawn( "script_model", origin + (0,0,5) );
-    level.perkBox[index].angles = (0,0,0);
+    level.perkBox[index].angles = angles;
     level.perkBox[index] setModel( "com_plasticcase_friendly" );
     level.perkBox[index] SetEntHeadIcon((0,0,45),level.shader_store[name],true);//SetEntHeadIcon(offset,shader,keepPosition)
     level.perkBox[index].itemName = perk;

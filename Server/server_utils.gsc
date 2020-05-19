@@ -1,3 +1,154 @@
+
+
+kill_popUp( amount, bonus, hudColor, glowAlpha )
+{
+    self endon( "disconnect" );
+    self endon( "joined_team" );
+    self endon( "joined_spectators" );
+
+    if ( amount == 0 )
+        return;
+
+    self notify( "scorePopup" );
+    self endon( "scorePopup" );
+
+    self.xpUpdateTotal += amount;
+    self.bonusUpdateTotal += bonus;
+
+    wait ( 0.05 );
+
+    if ( self.xpUpdateTotal < 0 )
+        self.hud_scorePopup.label = &"";
+    else
+        self.hud_scorePopup.label = &"MP_PLUS";
+
+    self.hud_scorePopup.color     = hudColor;
+    self.hud_scorePopup.glowColor = hudColor;
+    self.hud_scorePopup.glowAlpha = glowAlpha;
+    self.hud_scorePopup setValue(self.xpUpdateTotal);
+    self.hud_scorePopup.x     = -220;
+    self.hud_scorePopup.y     = -210;
+    self.hud_scorePopup.alpha = 0.85;
+    //self.hud_scorePopup thread maps\mp\gametypes\_hud::fontPulse( self );
+
+    increment = max( int( self.bonusUpdateTotal / 20 ), 1 );
+        
+    if ( self.bonusUpdateTotal )
+    {
+        while ( self.bonusUpdateTotal > 0 )
+        {
+            self.xpUpdateTotal += min( self.bonusUpdateTotal, increment );
+            self.bonusUpdateTotal -= min( self.bonusUpdateTotal, increment );
+            
+            self.hud_scorePopup setValue( self.xpUpdateTotal );
+            
+            wait ( 0.05 );
+        }
+    }   
+    else
+    {
+        wait ( 1.0 );
+    }
+
+    self.hud_scorePopup fadeOverTime( 0.75 );
+    self.hud_scorePopup.alpha = 0;
+    
+    self.xpUpdateTotal = 0;     
+}
+
+
+
+
+addLower( name, text, font, size )
+{
+    newMessage = undefined;
+    foreach ( message in self.lowerMessages )
+    {
+        if ( message.name == name )
+        {
+            if ( message.text == text && message.priority == priority )
+                return;
+
+            newMessage = message;
+            break;
+        }
+    }
+
+    if ( !isDefined( newMessage ) )
+    {
+        newMessage = spawnStruct();
+        self.lowerMessages[ self.lowerMessages.size ] = newMessage;
+    }
+
+    newMessage.name      = name;
+    newMessage.text      = text;
+    newMessage.time      = time;
+    newMessage.fontScale = size;
+    newMessage.font      = font;
+    newMessage.priority  = 1;
+}
+
+
+removeLower( name )
+{
+    for ( i = 0; i < self.lowerMessages.size; i++ )
+    {
+        if ( self.lowerMessages[ i ].name != name )
+            continue;
+
+        message = self.lowerMessages[ i ];
+        if ( i < self.lowerMessages.size - 1 )
+            self.lowerMessages[ i ] = self.lowerMessages[ self.lowerMessages.size - 1 ];
+
+        self.lowerMessages[ self.lowerMessages.size - 1 ] = undefined;
+    }
+}
+
+
+getLower()
+{
+    return self.lowerMessages[ 0 ];
+}
+
+
+setLower( name, text, font , fontScale)
+{
+    self addLower( name, text, font, fontScale);
+    self updateLower();
+    //self notify( "lower_message_set" );
+}
+
+
+updateLower()
+{
+    message = self getLower();
+
+    if ( !isDefined( message ) )
+    {
+        self.lowerMessage.alpha = 0;
+        self.lowerTimer.alpha = 0;
+        return;
+    }
+
+    self.lowerMessage setText( message.text );
+    if ( isDefined( message.time ) && message.time > 0 )
+        self.lowerTimer setTimer( max( message.time - ( ( getTime() - message.addTime ) / 1000 ), 0.1 ) );
+    else
+        self.lowerTimer setText( "" );
+    
+    self.lowerMessage.alpha = 0.85;
+    self.lowerTimer.alpha   = 1;
+}
+
+clearLower( name, fadetime )
+{
+    self removeLower( name );
+    self updateLower();
+}
+
+
+
+
 setCustomMessage(id, string)
 {
     if(!isDefined(self.Hud.LowerMessage))
@@ -10,7 +161,7 @@ setCustomMessage(id, string)
     else if(isDefined(self.Hud.LowerMessage)) 
     {
         self.Hud.LMid = id;
-        self.Hud.LowerMessage setSafeText(string);
+        self.Hud.LowerMessage setText(string);
     }
 }
 clearCustomMessage(id)
@@ -27,7 +178,7 @@ RedFadeToBlue(id)
     self endon("disconnect");
     
     self.bannerFade = true;
-    id.color        = (1,0,0);
+    id.color        = (1,.25,0);
     currColor       = "red";
     wait .05;
     
@@ -159,6 +310,7 @@ getCamoNameString(camoId)
     camoNameString = tableLookupIString("mp/camoTable.csv",1,camoId,2);
     return camoNameString;
 }
+call_gWN(weapon){return getWeaponName(weapon);}
 
 getWeaponName(current)
 {

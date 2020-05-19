@@ -16,10 +16,10 @@ pTemp = "";
         attacker.score+= level.zombie_hit_points;
         attacker.pers["score"]+= level.zombie_hit_points;
         
-        attacker thread maps\mp\gametypes\_rank::scorePopup( level.zombie_hit_points, 0,(1,.2,0.6), 1 );
+        attacker thread kill_popUp( level.zombie_hit_points, 0,(1,1,0.2), 0 );
         if( (self.crate1.health <= 0) && (self.name != pTemp) )
         {   
-            attacker thread maps\mp\gametypes\_rank::scorePopup( level.zombie_kill_points, 0,(1,.2,0.6), 1 );
+            attacker thread kill_popUp( level.zombie_kill_points, 0,(1,1,0.2), 0 );
             self notify("bot_death");
             self.crate1 notify("bot_death");
             self thread killEnt(self.head, 2);
@@ -29,7 +29,7 @@ pTemp = "";
             if(int == 1)
             self thread spawnDrop();
             
-            attacker thread maps\mp\gametypes\_rank::scorePopup( level.zombie_hit_points, 0, (1,.2,0.6), 1 );
+            attacker thread kill_popUp( level.zombie_hit_points, 0, (1,1,0.2), 0 );
             attacker.kills++;
             attacker.pers["kills"] = attacker.kills;
             attacker.score += level.zombie_kill_points;

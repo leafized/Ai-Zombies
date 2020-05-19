@@ -38,21 +38,21 @@ MysteryBox()
             if(distance(self.origin, level.packRB.origin) <80 && self.isBuying == false && level.packRB.isBusy == false)
             {
                 
-                self setLowerMessage("getGun", "Press ^3[{+activate}] ^7for ^5Mystery Box^7(^2$^3"+level.store_item_price_weapon+"^7)",undefined,0);
+                self setLower("getGun", "Press ^3[{+activate}] ^7for ^5Mystery Box^7(^2$^3"+level.store_item_price_weapon+"^7)",undefined,0);
                 if(self usebuttonpressed() && self.isBuying == false)
                 {
-                    self tryBuying(level.wepInfo, "weapon", level.store_item_price_weapon);
+                    self tryBuying(level.wepInfo, "weapon", level.store_item_price_weapon, level.packRB);
                     wait 1;
                 }
             }
             else if(distance(self.origin, level.packRB.origin) <80 && level.packRB.isBusy == true)
             {
                 
-                self setLowerMessage("getGun", "Sorry, this box is currently in use by! ^3"+level.packRB.user,undefined,0);
+                self setLower("getGun", "^1Sorry, this box is currently in use by! ^3"+level.packRB.user);
             }
             else if(distance(sef.origin, level.packRB.origin) > 80)
             {
-                self clearLowerMessage("getGun");
+                self clearLower("getGun");
             }
         }
         wait .2;

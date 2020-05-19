@@ -537,9 +537,8 @@ overflowfix_monitor()
             level.overflowElem ClearAllTextAfterHudElem();
             level.strings = [];
             level notify("overflow_fixed");
-            
             foreach(player in level.players)
-            player iprintln( "^5overflow reset!" );
+            player clearCustomMessage();
         }
         wait 0.01; 
     }

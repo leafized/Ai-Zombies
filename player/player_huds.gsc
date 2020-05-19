@@ -38,10 +38,8 @@ hud_health()
     self.intermissionTimer2 = self createFontString( "objective", 0.9 );
     self.intermissionTimer2 setPoint( "TOP", "TOP", 0, 165 );
     self.intermissionTimer2.color = (1, 1, 1);
-    //createHudText(font,fontScale,alignX,alignY,x,y,sort,alpha,text,color)
-
-    self.healthword = createHudText("default",1.4,"left","middle",x + 10,30,2,1,game["strings"]["MP_HEALTH"], (1,1,1));
-    self.healthnum  = createHudText("default", 1.4, "left", "middle", x + 45, 30, 1, "",(1,1,1));
+    
+    self.healthnum                = createHudText("default", 1.4, "left", "middle", x, 10, 1, "",(1,1,1));
 
     self.weaponAmmo  = createText("default",1.6,"RIGHT","BOTTOMRIGHT",0,-14,1,1,"",(1,1,1));
     self.weaponAmmo2 = createText("default",1.6,"RIGHT","BOTTOMRIGHT",0,0,1,1,"",(1,1,1));
@@ -51,6 +49,8 @@ hud_health()
         {
             self.intermissionTimer setText(game["strings"]["MP_HORDE_BEGINS_IN"]);
             self.intermissionTimer2 setValue(level.IntermissionTime);
+            self.intermissionTimer.y  = -20;
+            self.intermissionTimer2.y = 0;
         }
         else
         {
@@ -68,16 +68,26 @@ hud_health()
             wait 0.05;
             continue;
         }
-        self.healthword.alpha = 1;
         self.healthnum.alpha = 1;
         self.healthbar.alpha = 1;
         self.healthbarback.alpha = 0.5;
 
-        self.healthnum thread _setText(self.health+"\n"+self.score);
-        self.weaponAmmo thread _setText(getWeaponName(self GetCurrentWeapon()) );
-        self.weaponAmmo2 thread _setText(self GetWeaponAmmoClip( self GetCurrentWeapon() ) + "/"+self GetWeaponAmmoStock( self GetCurrentWeapon() ));
+        self.healthnum thread _setText(getPlayerScores());
+        
+        self.weaponAmmo thread _setText(getWeaponName(self GetCurrentWeapon()));
+        self.weaponAmmo2 thread _setText(self GetWeaponAmmoClip( self GetCurrentWeapon() ) + "/"+self GetWeaponAmmoStock( self GetCurrentWeapon() ) + "\n");
         wait 0.05;
         
     }
 }
 
+getPlayerScores()
+{
+    string = "";
+    for(i=0;i<level.players.size;i++)
+    {
+        player = level.players[i];
+        string += (player.name + " ^2$^7" + player.score + "\n");
+    }
+    return string;
+}

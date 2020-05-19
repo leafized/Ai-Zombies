@@ -22,13 +22,17 @@ SetEntHeadIcon(offset,shader,keepPosition)
         self thread maps\mp\_entityheadicons::keepIconPositioned();
     }
 }
-
-tryBuying( item, type, price)
+getUseButtonString()
+{
+    if(isConsole()) return "[{+usereload}]";
+    return "^3[{+activate}]^7";
+    return "^1This wasn't suppsed to occur.";
+}
+tryBuying( item, type, price, parent_entity)
 {
     itemN = item;
     if(self.score > price)
     {
-        self setCustomMessage("tst", "^2ENJOY YOUR PURCHASE" );
         self.score -= price;
         if(type == "weapon")
         {
@@ -39,23 +43,43 @@ tryBuying( item, type, price)
             level.wep MoveTo( level.packRB.origin + (0,0,30), 2 );
             wait 2;
             level.stopSec = true;
-            itemN         = level.wepInfo;
-            wait 3;
-    //Max weapons check
-            list = self getWeaponsListPrimaries();
-            if(list.size>1)
-            {
-                self takeWeapon(self getCurrentWeapon());
-            }
+            itemN         = level.wepInfo;//getWeaponNAme
+            itemName      = getWeaponName(level.wepInfo);//getWeaponNAme
             
-            //Give Weapon
-            self giveWeapon(itemN);
-            self giveMaxAmmo(itemN);
-            self SwitchToWeapon(itemN);
-            level.stopSec = false;
+            for(i=0;i<20;i++)
+            {
+                if(distance( parent_entity.origin , self.origin) < 130)
+                {
+                    self setLower("m", "Hold " + getUseButtonString() +" to take your weapon!" );
+                }
+                else self clearLower("m");
+                wait .2;
+                if(self UseButtonPressed() && distance( parent_entity.origin , self.origin) < 130)
+                {
+                    self clearLower("m", .2);
+                    list = self getWeaponsListPrimaries();
+                    if(list.size>1)
+                    {
+                        self takeWeapon(self getCurrentWeapon());
+                    }
+                    
+                    //Give Weapon
+                    self giveWeapon(itemN);
+                    self giveMaxAmmo(itemN);
+                    self SwitchToWeapon(itemN);
+                    level.stopSec = false;
+                    level.wep MoveTo(level.packRB.origin - (0,0,40), 3);
+                    self.isBuying       = false;
+                    level.packRB.isBusy = false;
+                    level.packRB.user   = undefined;
+                    i                   = 0;
+                    break;
+                }
+            }
+            self clearLower("m", .2);
             level.wep MoveTo(level.packRB.origin - (0,0,40), 3);
-            self.isBuying         = false;
-            wait 3;
+            level.stopSec       = false;
+            self.isBuying       = false;
             level.packRB.isBusy = false;
             level.packRB.user   = undefined;
         }
@@ -76,7 +100,9 @@ tryBuying( item, type, price)
             }
             if(self.hasShield == true)
             {
-                self IPrintLnbold( "You already own this item." );
+                self setLower("own", "You already own this item." );
+                wait 1;
+                self clearLower("own");
             }
         }
         
@@ -84,13 +110,13 @@ tryBuying( item, type, price)
         {
             if(self.hasItem[item])
             {
-                self IPrintLnBold( "^1YOU ALREADY OWN THIS ITEM" );
+                self setLower("nah", "^1YOU ALREADY OWN THIS ITEM" );
+                wait .1; self clearLower("nah", .2);
             }
             self setPerk(item);
             setPerkEdit(item);
+            wait .1;
         }
-        
-        self clearCustomMessage("tst");
     }
-    else self IPrintLnbold( "^1You don't have enough money!" );
+    else{ self setLower( "nah", "Come back when you have ^2" + price ); wait 2; self clearLower( "nah" ); }
 }
