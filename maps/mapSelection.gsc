@@ -29,6 +29,8 @@ loadMap(type)
 
 loadUtilities()
 {
+
+    
      init_zm_developer_settings();
      thread init_drop_information();
 }

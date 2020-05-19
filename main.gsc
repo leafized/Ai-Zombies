@@ -15,8 +15,10 @@
 #define ammo_clip_count = 40;
 #define ammo_stock_count = 280;
 #define vision_constant = "cobra";
+#define version_number = "0.10.2b";
  init()
 {
+
      level thread loadMap();//This function checks if the map is in the supported list.
 
      level thread precacheItems();
