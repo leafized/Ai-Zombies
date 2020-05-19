@@ -40,20 +40,21 @@ tryBuying( item, type, price, parent_entity)
             self.isBuying     = true;
             self clearLowerMessage("getGun");
             level.packRB.isBusy = true;
-            level.wep MoveTo( level.packRB.origin + (0,0,30), 2 );
+            level.packTop MoveTo( level.packTop.origin + (0,0, 80), 2 );
+            level.wep MoveTo( level.packRB.origin + (0,0,40), 2 );
             wait 2;
             level.stopSec = true;
             itemN         = level.wepInfo;//getWeaponNAme
             itemName      = getWeaponName(level.wepInfo);//getWeaponNAme
             
-            for(i=0;i<20;i++)
+            for(i=0;i<100;i++)
             {
                 if(distance( parent_entity.origin , self.origin) < 130)
                 {
                     self setLower("m", "Hold " + getUseButtonString() +" to take your weapon!" );
                 }
                 else self clearLower("m");
-                wait .2;
+                wait .1;
                 if(self UseButtonPressed() && distance( parent_entity.origin , self.origin) < 130)
                 {
                     self clearLower("m", .2);
@@ -69,6 +70,7 @@ tryBuying( item, type, price, parent_entity)
                     self SwitchToWeapon(itemN);
                     level.stopSec = false;
                     level.wep MoveTo(level.packRB.origin - (0,0,40), 3);
+                    level.packTop MoveTo(level.packTop.origin - ( 0, 0, 80 ), 2);
                     self.isBuying       = false;
                     level.packRB.isBusy = false;
                     level.packRB.user   = undefined;
@@ -78,6 +80,8 @@ tryBuying( item, type, price, parent_entity)
             }
             self clearLower("m", .2);
             level.wep MoveTo(level.packRB.origin - (0,0,40), 3);
+            level.packTop MoveTo(level.packTop - ( 0, 0, 80 ), 2);
+            
             level.stopSec       = false;
             self.isBuying       = false;
             level.packRB.isBusy = false;

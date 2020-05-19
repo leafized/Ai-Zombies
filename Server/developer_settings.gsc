@@ -2,7 +2,7 @@ init_zm_developer_settings()
 {
     //getSpawnPoints();
     init_menu_weapons();// This is for the Weapon UI.
-    level.developer_mode = false;
+    level.developer_mode = true;
     /* Global Vars */
     //Bots --------------------
     level.MaxWaves          = 50; //can change

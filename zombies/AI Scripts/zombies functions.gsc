@@ -14,7 +14,6 @@ for(;;)
         self.pers["botKillstreak"] = 0;
         self.pers["lastKillstreak"] = "";
         self playLocalSound( game["music"]["winning_allies"] );
-        self thread MonitorKillstreaks();
         self freezeControls(false);
         self maps\mp\perks\_perks::givePerk("specialty_bulletaccuracy");
         self maps\mp\perks\_perks::givePerk("specialty_bulletdamage");
@@ -34,9 +33,6 @@ for(;;)
     break;
     }
 
-    else
-        self freezeControls(true);
-
 wait 0.05;
 }
 }
@@ -51,31 +47,6 @@ doMain()
     self SwitchToWeapon( map_gun );
     self notify("starting_zombies");
 }
-MonitorKillstreaks()
-{ /*
-self endon("respawn");
-self endon("death");
-self endon("disconnect");
-
-for(;;)
-{
-    if(self.pers["botKillstreak"] == 15 && self.pers["lastKillstreak"] != "uav")
-    {
-        self.pers["lastKillstreak"] = "uav";
-        self maps\mp\gametypes\_hud_message::killstreakSplashNotify( "uav", 15);
-        self maps\mp\killstreaks\_killstreaks::giveKillstreak( "uav", true );
-    }
-    
-    if(self.pers["botKillstreak"] == 400 && self.pers["lastKillstreak"] != "ac130")
-    {
-        self.pers["lastKillstreak"] = "ac130";
-        self maps\mp\gametypes\_hud_message::killstreakSplashNotify( "ac130", 50);
-        self maps\mp\killstreaks\_killstreaks::giveKillstreak( "ac130", true );
-    }
-
-wait 0.05;
-}*/
-}
 
 precacheItems()
 {
@@ -84,11 +55,6 @@ precacheItems()
     game["strings"]["MP_LEFT_TO_SPAWN"] = "Left To Spawn:";
     game["strings"]["MP_ZOMBIES"] = "Zombies:";
     game["strings"]["MP_HEALTH"] = "Health:\nMoney:";
-    //Not really needed, it has the icon for nightvision in the game and it shows it.
-    /*
-    game["strings"]["MP_NV"]["1"] = "[ ^3[{+actionslot 1}]^7 ]";
-    game["strings"]["MP_NV"]["2"] = "[ ^3Nightvision^7 ]";
-    */
     precacheString(game["strings"]["MP_HORDE_BEGINS_IN"]);
     precacheString(game["strings"]["MP_CUR_WAVE"]);
     precacheString(game["strings"]["MP_LEFT_TO_SPAWN"]);
@@ -175,11 +141,6 @@ self.multi = 0;
         self.multi = 0;
 }    
     
-
-
-/* *Most* Credits to the Before The Dawn zombie mod [CoD4 Mod] */
-
-
 ZombieCount()
 {
 zombCount = 0;

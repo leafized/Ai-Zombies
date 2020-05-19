@@ -1,4 +1,4 @@
-IntermissionCountdown()
+IntermissionCountdown() // called in maps
 {
     for(count = level.IntermissionTimeStart; count > -1; count--)
     {
@@ -95,7 +95,7 @@ for(;;)
         foreach( player in level.players )
         {
             player hide();
-            player freezeControls(true);
+            player freezeControls(false);
             player disableWeapons(true);
             if( !level.whowins ) player setLowerMessage( "spawn_info", &"PLAYERS_WON" );
             player _SetActionSlot( 1, "" );

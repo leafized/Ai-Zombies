@@ -1,5 +1,6 @@
 map_mp_rust()
 {            
+    loadUtilities();
     level thread FuncsMain();
     level thread IntermissionCountdown();
     level.prematchPeriod = 0;
@@ -22,6 +23,7 @@ map_mp_rust()
 }
 map_mp_underpass()
 {
+    loadUtilities();
     level thread FuncsMain();
     level thread IntermissionCountdown();
     level.prematchPeriod = 0;
