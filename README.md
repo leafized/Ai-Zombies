@@ -3,8 +3,7 @@ THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
 Supported Maps: Underpass, Rust
 
-This update is NOT stale and has things that need to be worked on. Power ups still need to have work done.
-
+When you download a new version, please delete all old files. This can cause issues of functions being defined when they're not supposed to. I have removed many folders which causes duplicate files.
 
 THIS IS A PUBLIC RELEASE.
 
