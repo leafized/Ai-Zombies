@@ -3,7 +3,7 @@ spawnAmmoBox(origin, angles)
     level.ammoBox       = spawn( "script_model", origin + (0,0,5) );
     level.ammoBox.angles = angles;
     level.ammoBox setModel( "com_plasticcase_friendly" );
-    level.ammoBox SetEntHeadIcon((0,0,45),level.shader_store["AMMO"],true);
+    level.ammoBox thread SetEntHeadIcon((0,0,45),level.shader_store["AMMO"],true);
 }
 AmmoBoxMonitor()
 {

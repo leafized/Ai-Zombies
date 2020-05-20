@@ -13,10 +13,8 @@ spawnWeaponBox(origin, angles)
     level.packRB.isBusy  = false;
     
     level.wep        = spawn("script_model",level.packRB.origin);
-    level.wep.angles = angles;
-    level.packRB SetEntHeadIcon((0,0,30),level.shader_store["BOX"],true);
-    
-    level.wep.angles = (0,0,0);
+    level.wep.angles = angles  ;
+    level.packRB thread SetEntHeadIcon((0,0,30),level.shader_store["BOX"],true);
     
     level thread boxChange();
 }

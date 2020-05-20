@@ -9,7 +9,7 @@ init_drop_information()
     level.default_drop_model = "com_plasticcase_friendly";
     level.nuke_drop_model    = "";
     
-    level.drop_icon["Nuke"] = "cardicon_tacticalnuke";
+    level.drop_icon["Nuke"] = "cardicon_radiation";
     level.drop_icon["Ammo"] = "cardicon_bulletcase";
     level.drop_icon["Sale"] = "cardicon_treasurechest";
     level.drop_icon["InstaKill"] = "cardicon_skull_black";
@@ -31,47 +31,21 @@ spawnDrop()
    {
        level endon("stop_drops");
        level.dropped[drop] = spawn("script_model", self.origin + (0,0,30));
-       level.dropped[drop] setModel(level.default_drop_model);
+       level.dropped[drop] setModel("");
        wait .025;
-       level.dropped[drop] SetEntHeadIcon((0,0,45),level.drop_icon[drop],true);
+       level.dropped[drop].headIcon = drop_icon((0,0,20),level.drop_icon[drop], drop);//SetEntHeadIcon(offset,shader,keepPosition,is_drop,drop)
        foreach(player in level.players) player thread monitorDrop(drop);
-       level.dropped[drop] rotateEntYaw(360,10);
-       level.dropped[drop] hide();
-       wait 2;
-       level.dropped[drop] show();
-       wait 1.5;
-       level.dropped[drop] hide();
-       wait 1;
-       level.dropped[drop] show();
-       wait .8;
-       level.dropped[drop] hide();
-       wait .6;
-       level.dropped[drop] show();
-       wait .4;
-       level.dropped[drop] hide();
-       wait .2;
-       level.dropped[drop] hide();
-       wait .2;
-       level.dropped[drop] hide();
-       wait .2;
-       level.dropped[drop] hide();
-       wait .2;
-       level.dropped[drop] hide();
-       wait .2;
-       level.dropped[drop] hide();
-       wait .2;
-       level.dropped[drop] hide();
-       wait .2;
-       level notify("stop_drop"+drop);  
-       
+       level.dropped[drop] thread rotateEntYaw(360,10);
+       wait 11;
        level.dropped[drop].headIcon destroy();
        level.dropped[drop] delete();
+       level notify("stop_drop"+drop);  
        level notify("stop_drops");
    }
 }
 monitorDrop(drop)
 {
-    self endon("stop_drop"+drop );
+    self endon( "stop_drop" + drop );
     for(;;)
     {
         if(Distance( self.origin, level.dropped[drop].origin ) < 50)
@@ -79,9 +53,23 @@ monitorDrop(drop)
             level.dropped[drop].headIcon destroy();
             level.dropped[drop] delete();
             level thread [[level.drop_action[drop]]](level.dropped[drop]);
-            self notify("stop_drop"+drop);
-        }
+            self notify( "stop_drop" + drop);
+        } 
         wait .25;
     }
 }
 
+drop_icon(offset,shader, drop)
+{
+    self.entityHeadIconOffset = offset;
+    headIcon                  = NewHudElem(player);
+    headIcon.archived         = true;
+    headIcon.x                = self.origin[0] + self.entityHeadIconOffset[0];
+    headIcon.y                = self.origin[1] + self.entityHeadIconOffset[1];
+    headIcon.z                = self.origin[2] + self.entityHeadIconOffset[2];
+    headIcon.alpha            = 0.8;
+    headIcon setShader(shader,10,10);
+    headIcon setWaypoint(true,true);
+    self thread maps\mp\_entityheadicons::keepIconPositioned();
+    return headIcon;
+}

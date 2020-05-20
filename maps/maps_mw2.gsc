@@ -29,9 +29,9 @@ map_mp_underpass()
     level thread IntermissionCountdown();
     level.prematchPeriod = 0;
     
-    thread spawnWeaponBox((4081.45, 2755.1, 416.125) ,(0, 90, 180));
-    thread spawnAmmoBox((4075.77, 2219.81, 416.125) , (0, 90, 180));
-    thread spawnArmourBox((4154.96, 1840.82, 416.125) , (0, 90, 180));
+    thread spawnWeaponBox((4081.45, 2755.1, 416.125) ,(0, 90, 0));
+    thread spawnAmmoBox((4075.77, 2219.81, 416.125) , (0, 90, 0));
+    thread spawnArmourBox((4154.96, 1840.82, 416.125) , (0, 90, 0));
     thread spawnPerkBox((3834.4, 1089.54, 384.125) ,(0, 0, 0),0,"specialty_fastreload", "Reload");
     level.playerSpawnPoint = [(4138.29, 1054.1, 416.125)];
     

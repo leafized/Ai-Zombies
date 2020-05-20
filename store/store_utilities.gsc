@@ -1,4 +1,4 @@
-SetEntHeadIcon(offset,shader,keepPosition)
+SetEntHeadIcon(offset,shader,keepPosition, is_drop, drop)
 {
     if(isDefined(offset)) 
     {
