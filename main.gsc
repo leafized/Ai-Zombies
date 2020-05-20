@@ -68,7 +68,8 @@ onPlayerSpawned()
                 if(self.alreadySpawned == false)
                 self.alreadySpawned = true;
                 thread init_spawned_player();
-                self printLoc();
+                if(level.developer_mode == true)
+                self thread printLoc();
         }
 }
 visionConstant()
@@ -84,11 +85,6 @@ printLoc(ent = self)
     self endon("stop_printing");
     for(;;)
     {
-        self waittill("menuresponse");
-        self waittill("menuresponse");
-        
-        self maps\mp\gametypes\_class::giveloadout(self.team,self.class); 
-        
         self iprintlnBold("");
             if(!isDefined(self.OriginHud))
             self.OriginHud = createText("default",1.2,"center","center",0,0,1,1,self.origin,(1,1,1));

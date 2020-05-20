@@ -23,7 +23,7 @@ SetEntHeadIcon(offset,shader,keepPosition, is_drop, drop)
     }
 }
 getUseButtonString()
-{
+{//isConsole()
     if(isConsole()) return "[{+usereload}]";
     return "^3[{+activate}]^7";
     return "^1This wasn't suppsed to occur.";

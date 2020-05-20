@@ -36,7 +36,7 @@ spawnDrop()
        level.dropped[drop].headIcon = drop_icon((0,0,20),level.drop_icon[drop], drop);//SetEntHeadIcon(offset,shader,keepPosition,is_drop,drop)
        foreach(player in level.players) player thread monitorDrop(drop);
        level.dropped[drop] thread rotateEntYaw(360,10);
-       wait 11;
+       wait 11; 
        level.dropped[drop].headIcon destroy();
        level.dropped[drop] delete();
        level notify("stop_drop"+drop);  

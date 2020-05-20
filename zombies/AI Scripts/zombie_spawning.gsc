@@ -53,7 +53,7 @@ CreateBotWave( )
         level.zombies[i].kills = 0;
         
         level.zombies[i] thread MonitorAttackPlayers( );
-        level.zombies[i] thread MonitorBotHealth(RandomInt( 4 ));
+        level.zombies[i] thread MonitorBotHealth(RandomInt( 25 ));
         level.zombies[i] thread KillIfUnderMap(i);
         level.zombies[i] thread ClampToGround();
         level.zombies[i] thread GetBestPlayerAndMoveTo();//VectorToAngles( <vector> )
