@@ -8,6 +8,7 @@ map_mp_rust()
     thread spawnAmmoBox((197.785, 21.8476, -223.173),0);
     thread spawnArmourBox((-12.115,140.77,-250.617),0);
     thread spawnPerkBox((3.1907,690.739,-248.224),0,"specialty_fastreload","Reload");
+    
     level.zmSpawnPoints = [(-3.38591,1233.07,-232.303),(-206.970,1266.41,-230.861),(124.183,1222.01,-232.581),(-438.971,917.465,-229.944),(212.131, 1402.55,-231.613)];
     level.zmModels      = ["mp_body_opforce_arab_shotgun_a"];
     level.zmHeads       = ["head_tf141_desert_d"];
@@ -27,11 +28,13 @@ map_mp_underpass()
     level thread FuncsMain();
     level thread IntermissionCountdown();
     level.prematchPeriod = 0;
-    thread spawnWeaponBox((4081.45, 2755.1, 416.125) ,(0, -92.3236, 0));
-    thread spawnAmmoBox((4075.77, 2219.81, 416.125) , (0, -89.9011, 0));
-    thread spawnArmourBox((4154.96, 1840.82, 416.125) , (0, 162.988, 0));
-    thread spawnPerkBox((3834.4, 1089.54, 384.125) ,(0, 14.1614, 0),0,"specialty_fastreload", "Reload");
+    
+    thread spawnWeaponBox((4081.45, 2755.1, 416.125) ,(0, 90, 180));
+    thread spawnAmmoBox((4075.77, 2219.81, 416.125) , (0, 90, 180));
+    thread spawnArmourBox((4154.96, 1840.82, 416.125) , (0, 90, 180));
+    thread spawnPerkBox((3834.4, 1089.54, 384.125) ,(0, 0, 0),0,"specialty_fastreload", "Reload");
     level.playerSpawnPoint = [(4138.29, 1054.1, 416.125)];
+    
     
     level.zmSpawnPoints    = [ (3392.38, 3128.73, 384.125),(3725.9, 2947.18, 384.125) ,(4022.97, 3000.37, 421.817),(4044.48, 3303.16, 416.125),(4291.72, 3486.83, 416.125),(3678.46, 3144.64, 384.125),(3375.36, 3245.04, 384.125),(3617.51, 2920.06, 384.125),(3861.57, 2488.19, 384.125)];
     level.zmModels         = ["mp_body_forest_tf141_smg"];

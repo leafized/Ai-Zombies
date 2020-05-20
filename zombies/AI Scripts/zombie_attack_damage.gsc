@@ -9,7 +9,7 @@ self endon("destroy_self");
         {
             if(distance(player.origin, self.origin) <= 50)
             {
-                earthquake(0.7,1, self.origin + (0,0,40), 60);
+                earthquake(0.4,1, self.origin + (0,0,40), 50);//Earthquake( <scale>, <duration>, <source>, <radius> )
                 player.health--;
 
                 if(player.health <= 0)

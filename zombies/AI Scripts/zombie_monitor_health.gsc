@@ -8,8 +8,8 @@ pTemp = "";
         self.crate1 waittill("damage", damage, attacker, direction, point, type, tagName,i1,i2,i3,sWeapon);
         
         attacker thread maps\mp\gametypes\_damagefeedback::updateDamageFeedback(tagName);
-        if(isDefined(attacker.isUpgrade[attacker GetCurrentWeapon()]))
-        self.crate1.health -= damage + level.player_weapon_damage_scae;
+        if(isDefined(attacker.isUpgrade[attacker GetCurrentWeapon()]) || level.instaKillActive == true)
+        self.crate1.health -= damage + level.damage_scaler;
         else
         self.crate1.health -= damage;
        

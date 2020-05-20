@@ -1,7 +1,7 @@
 spawnArmourBox(origin, angles)
 {
     level.armorBox       = spawn( "script_model", origin + (0,0,5) );
-    level.armorBox.angles = (0,0,0);
+    level.armorBox.angles = angles;
     level.armorBox setModel( "com_plasticcase_friendly" );
     level.armorBox SetEntHeadIcon((0,0,45),level.shader_store["ARMOR"],true);
 }

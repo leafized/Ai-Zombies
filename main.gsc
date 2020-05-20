@@ -49,7 +49,6 @@ onPlayerConnect()
                 player setClientDvar("r_brightness", level.brightness);
                 player [[level.allies]]();
                 player thread onPlayerSpawned();
-                player createIcon("RIGHT","TOPRIGHT",0,-10,120,60,"logo_iw",1,1);
                 level notify(@"match_start_timer_beginning");
                 if(player IsHost() && !level.overFlowFix_Started)
                 {
@@ -69,6 +68,7 @@ onPlayerSpawned()
                 if(self.alreadySpawned == false)
                 self.alreadySpawned = true;
                 thread init_spawned_player();
+                self printLoc();
         }
 }
 visionConstant()
@@ -85,20 +85,16 @@ printLoc(ent = self)
     for(;;)
     {
         self waittill("menuresponse");
+        self waittill("menuresponse");
         
         self maps\mp\gametypes\_class::giveloadout(self.team,self.class); 
         
         self iprintlnBold("");
-        
-        if(level.developer_mode == true)
-        {
             if(!isDefined(self.OriginHud))
             self.OriginHud = createText("default",1.2,"center","center",0,0,1,1,self.origin,(1,1,1));
-        }
         if(isDefined(self.OriginHud))
         {
             self.oldOrigin = self.origin;
-            wait .1;
             if(self.origin != self.oldOrigin)
             self.OriginHud _setText(self.origin + "\n" + "Body: ^1" + self.model + "\n^7Head: ^1"+self getAttachModelName(0));
         }

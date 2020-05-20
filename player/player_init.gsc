@@ -64,7 +64,7 @@ init_spawned_player()
     
     self setLower("intro", "The content in this video is in BETA and WILL change.", "objective", 1);//setLower(name,text,font,fontScale)
     
-    thread RedFadeToBlue(self.lowerMessage);
+    //thread RedFadeToBlue(self.lowerMessage);
     
     wait 2; 
     

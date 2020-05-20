@@ -3,6 +3,7 @@ nukeZombies(drop_to_destroy)
 {
     level endon("stop_drop"+drop_to_destroy);
     level.dropped[drop_to_destroy] destroy();
+    level.dropped[drop_to_destroy].headIcon destroy();
     IPrintLnBold( "ZOMBIES NUKED" );
     for(i = 0;i<level.BotsForWave;i++)
     {

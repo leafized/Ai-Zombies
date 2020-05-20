@@ -17,10 +17,8 @@ fireSale()
     Announcement( "^3FIRESALE STARTED" );
     time             = 30;
     Timer            = NewHudElem();
-    Timer.alignX     = "top";
-    Timer.alignY     = "top";
-    Timer.horzAlign  = "top";
-    Timer.vertAlign  = "top";
+    Timer.align      = "BOTTOM";
+    Timer.relative   = "BOTTOM";
     Timer.foreground = true;
     Timer.fontScale  = 1;
     Timer.color      = ( 175/255, 34/255, 34/255 );

@@ -12,11 +12,13 @@ loadMap(type)
             if(isDefined(level.map_function[i]))
             {
                 level thread [[level.map_function[i]]]();
+                level.init_zombies_mode = true;
                 return true;
             }
         }
         else
         {
+            level.init_zombies_mode = false;
             foreach(player in level.players)
             {
                 player setCustomMessage("test","This map is unsupported.");
