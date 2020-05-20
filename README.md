@@ -1,15 +1,9 @@
 # Ai Zombies
 THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
+Supported Maps: Underpass, Rust
 
-[== IMPORTANT INFORMATION ===]
-[ KNOWN BUG: WHEN A PLAYER RESPAWNS, THEY WILL RESPAWN EACH ROUND (ONLY HAPPENS WITH MULTIPLE PEOPLE)
-[ KNOWN BUG: HOST WAYPOINTS DISAPPEAR FROM TIME TO TIME. FIX COMING SOON.
-[ KNOWN BUG: DUPLICATE FIRESALE DROPS (CAUSES DOUBLE TIMER), NOT A MAJOR BUG, WILL BE FIXED.
-[== END IMPORTANT INFO..   ==]
-[MAP SUPPORT [ LIST OF CURRENTLY SUPPORTED MAPS ] ]
-	- UNDERPASS
-	- RUST
+This update is NOT stale and has things that need to be worked on. Power ups still need to have work done.
 
 
 THIS IS A PUBLIC RELEASE.
@@ -24,6 +18,28 @@ NOTE: IT IS BEST TO PLAY SOLO AT THE MOMENT, BUT, MULTIPLE PLAYERS IS OKAY.
 THANK YOU FOR READING, ENJOY YOUR GAMEPLAY
 
 Changelog**
+
+0.10.2b LIVE CHANGE
+
+NOTE: A bug is found relating to the player. I suggest waiting until i push the fix ( In the works now )
+
+[Drops]
+- Reworked how drops are done. This will allow easier implementation of more drops.
+- Added InstaKill
+
+[Store]
+- All store items can now have cusotm angles, these were pre defined before.
+- All stores will now give a message if you cannot afford to pay.
+- Mysterybox has a new animation.
+
+[AI Changes]
+- AI recieved a small change to kills.
+- AI changes to prepare for waypoint mapping.
+- AI changes to prevent some clipping.
+
+[General Changes]
+- Files have been moved, to clean up the source.
+- Files have been named according to their location (Eyecandy i guess)
 
 0.10.1b LIVE CHANGE
 
