@@ -18,6 +18,22 @@ NOTE: IT IS BEST TO PLAY SOLO AT THE MOMENT, BUT, MULTIPLE PLAYERS IS OKAY.
 THANK YOU FOR READING, ENJOY YOUR GAMEPLAY
 
 Changelog**
+0.11.0b LIVE CHANGE
+
+[Drops]
+- Fixed a bug related to huds.
+- Removed the carepackage model.
+	*INSTEAD, you will see a waypoint icon.
+- Removed Firesale temporarily ( Still present in code base, you can add it back if you'd like )
+- Fixed a bug allowing more than one drop to spawn. This prevents overlapped drops.
+
+[Player]
+- Fixed player monitoring (for stores)
+
+[Store]
+- Mystery Box fully animated.
+- Store monitoring fix. (Previously, there was a bug allowing money to be taken later thn the purchase)
+
 
 0.10.2b LIVE CHANGE
 
