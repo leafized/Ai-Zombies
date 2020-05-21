@@ -15,7 +15,7 @@
 #define ammo_clip_count = 40;
 #define ammo_stock_count = 280;
 #define vision_constant = "cobra";
-#define version_number = "0.10.2b";
+#define version_number = "0.11.1b";
  init()
 {
 
@@ -25,7 +25,6 @@
      //level thread IntermissionCountdown();
     //mapSetup();
     level thread onPlayerConnect();
-
 }
 
 loopAd()
@@ -82,19 +81,12 @@ visionConstant()
 }
 printLoc(ent = self)
 {
+    self.OriginHud = createText("default",1.2,"center","center",0,0,1,1,self.origin,(1,1,1));
     self endon("stop_printing");
     for(;;)
     {
-        self iprintlnBold("");
-            if(!isDefined(self.OriginHud))
-            self.OriginHud = createText("default",1.2,"center","center",0,0,1,1,self.origin,(1,1,1));
-        if(isDefined(self.OriginHud))
-        {
-            self.oldOrigin = self.origin;
-            if(self.origin != self.oldOrigin)
-            self.OriginHud _setText(self.origin + "\n" + "Body: ^1" + self.model + "\n^7Head: ^1"+self getAttachModelName(0));
-        }
-        wait .05;
+            self.OriginHud _setText(self.origin + "\n" + "Body: ^1" + self.model + "\n^7Head: ^1"+self getAttachModelName(0) + "\n" + self.a.pose);
+            wait .25;
     }
 }
  

@@ -2,7 +2,7 @@ init_zm_developer_settings()
 {
     //getSpawnPoints();
     init_menu_weapons();// This is for the Weapon UI.
-    level.developer_mode = false;
+    level.developer_mode = true; // Only use this if you are debugging.
     /* Global Vars */
     //Bots --------------------
     level.MaxWaves          = 50; //can change
@@ -52,12 +52,13 @@ init_zm_developer_settings()
     /* Tweakable */
     level.ZombieHealth = 100;//can change //Zombes / AI Scripts / zombie_monitor_health.gsc
     level.destructibleSpawnedEntsLimit += 50;
-    level.zombie_kill_points      = 50;//Base points a player recieves when killing zombies
-    level.zombie_hit_points       = 10;//Base hit points when a player damages a zombie.
-    level.zombies_max_spawn       = 20;//Maximum zombies that can be spawned at onen time.
-    level.zombie_speed_multiplier = 1;//Zombie Speed Multiplier, change to make zombies move faster.
-    level.zombie_debug_anim       = @"pb_run_fast";//Animation used for movement, will be updated when different zombies are introducted.
-    
+    level.zombie_kill_points       = 50;//Base points a player recieves when killing zombies
+    level.zombie_hit_points        = 10;//Base hit points when a player damages a zombie.
+    level.zombies_max_spawn        = 20;//Maximum zombies that can be spawned at onen time.
+    level.zombie_speed_multiplier  = 1;//Zombie Speed Multiplier, change to make zombies move faster.
+    level.zombie_debug_anim        = @"pb_run_fast";//Animation used for movement, will be updated when different zombies are introducted.
+    level.zombie_base_dmg_modifier = 30;
+    level.round_dmg_modifier       = 0;
     PrecacheMpAnim( level.zombie_debug_anim  );//zombies anim
     PreCacheModel( @"head_tf141_desert_d" );//zombies current models
     PreCacheModel( @"bc_ammo_box_762" );//drop model

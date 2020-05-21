@@ -25,7 +25,7 @@ CreateBotWave( )
             level.RealSpawnedBots++;
     
             level.zombies[i] = spawn("script_model", level.zmSpawnPoints[randomInt(4)]);
-            level.zombies[i] setModel(level.zmModels[0]);
+            level.zombies[i] setModel(GetSpawnModel());
         level.zombies[i].head = spawn("script_model",level.zombies[i] getTagOrigin("j_spine4"));//getTag
         level.zombies[i].head setModel(level.zmHeads[0]);
         level.zombies[i].head.angles = (270,0,270);
