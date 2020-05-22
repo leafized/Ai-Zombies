@@ -609,7 +609,7 @@ kill_popUp( amount, bonus, hudColor, glowAlpha )
 
 
 
-
+//doExchangeWeapons();
 addLower( name, text, font, size )
 {
     newMessage = undefined;
@@ -636,7 +636,6 @@ addLower( name, text, font, size )
     newMessage.time      = time;
     newMessage.fontScale = size;
     newMessage.font      = font;
-    newMessage.priority  = 1;
 }
 
 

@@ -21,9 +21,9 @@ loadMap(type)
             level.init_zombies_mode = false;
             foreach(player in level.players)
             {
-                player setCustomMessage("test","This map is unsupported.");
+                player setLower("test","This map is unsupported.");
                 wait 10;
-                player clearCustomMessage("test");
+                player clearLower("test");
             }
         }
     }
@@ -33,4 +33,4 @@ loadUtilities()
 {
      init_zm_developer_settings();
      thread init_drop_information();
-}
+ }//addLower(name,text,font,size)

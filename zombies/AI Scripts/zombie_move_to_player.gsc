@@ -27,7 +27,7 @@ GetBestPlayerAndMoveTo( )
         self.angles = (0, movetoLoc[1], 0);
         self MoveTo(pTarget.origin, getMoveSpeed(pTarget));
         //self MoveTo(pTarget.origin, (distancesquared(self.origin, pTarget.origin) / 40000));
-        wait .01;
+        wait .08;
     }
 
 }
@@ -77,7 +77,7 @@ getMoveSpeed(target)
 {
     if(level.Wave < 5) return 4;
     if(level.Wave >= 5 < 10 ) return 3;
-    else return 2;
+    else return 2.5;
     //(distance(self.origin, target.origin) / 200)
 }
 

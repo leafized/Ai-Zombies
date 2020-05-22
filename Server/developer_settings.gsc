@@ -2,7 +2,7 @@ init_zm_developer_settings()
 {
     //getSpawnPoints();
     init_menu_weapons();// This is for the Weapon UI.
-    level.developer_mode = true; // Only use this if you are debugging.
+    level.developer_mode = false; // Only use this if you are debugging.
     /* Global Vars */
     //Bots --------------------
     level.MaxWaves          = 50; //can change
@@ -24,9 +24,9 @@ init_zm_developer_settings()
     //Brightness --------------
     level.brightness = 0;
     ///Prices  ----------------
-    level.store_item_price_weapon = 1000;
-    level.store_item_price["JUGG"] = 2500;
-    level.store_item_price_ammo  = 750;
+    level.store_item_price_weapon = 1500;
+    level.store_item_price["JUGG"] = 300;
+    level.store_item_price_ammo  = 1500;
     level.store_item_price_armor = 3000;
     
     //Perk Prices
@@ -34,7 +34,7 @@ init_zm_developer_settings()
     //Player Variables --------------
     if(level.developer_mode == true)
     level.player_starting_money = 9999999;
-    else level.player_starting_money = 750;
+    else level.player_starting_money = 500;
     //Shaders ------------------------
     level.shader_store["BOX"] = "cardicon_treasurechest";
     level.shader_store["AMMO"] = "cardicon_bullets_50cal";
@@ -52,11 +52,11 @@ init_zm_developer_settings()
     /* Tweakable */
     level.ZombieHealth = 100;//can change //Zombes / AI Scripts / zombie_monitor_health.gsc
     level.destructibleSpawnedEntsLimit += 50;
-    level.zombie_kill_points       = 50;//Base points a player recieves when killing zombies
+    level.zombie_kill_points       = 30;//Base points a player recieves when killing zombies
     level.zombie_hit_points        = 10;//Base hit points when a player damages a zombie.
     level.zombies_max_spawn        = 20;//Maximum zombies that can be spawned at onen time.
     level.zombie_speed_multiplier  = 1;//Zombie Speed Multiplier, change to make zombies move faster.
-    level.run_animation                   = @"pb_run_fast";
+    level.run_animation            = @"pb_run_fast";
     level.walk_animation           = "pb_walk_forward_mg";//Animation used for movement, will be updated when different zombies are introducted.
     level.zombie_base_dmg_modifier = 30;
     level.round_dmg_modifier       = 0;//this should always remain 0 unless packapunch is active on your weapon.
