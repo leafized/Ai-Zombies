@@ -56,10 +56,13 @@ init_zm_developer_settings()
     level.zombie_hit_points        = 10;//Base hit points when a player damages a zombie.
     level.zombies_max_spawn        = 20;//Maximum zombies that can be spawned at onen time.
     level.zombie_speed_multiplier  = 1;//Zombie Speed Multiplier, change to make zombies move faster.
-    level.zombie_debug_anim        = @"pb_run_fast";//Animation used for movement, will be updated when different zombies are introducted.
+    level.run_animation                   = @"pb_run_fast";
+    level.walk_animation           = "pb_walk_forward_mg";//Animation used for movement, will be updated when different zombies are introducted.
     level.zombie_base_dmg_modifier = 30;
-    level.round_dmg_modifier       = 0;
-    PrecacheMpAnim( level.zombie_debug_anim  );//zombies anim
+    level.round_dmg_modifier       = 0;//this should always remain 0 unless packapunch is active on your weapon.
+    PrecacheMpAnim( level.run_animation  );//zombies anim
+    PrecacheMPAnim( level.walk_animation );//Zombie Walking Animation
+    
     PreCacheModel( @"head_tf141_desert_d" );//zombies current models
     PreCacheModel( @"bc_ammo_box_762" );//drop model
     /* Spawn Anti-Glitch spots */

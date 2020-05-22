@@ -3,7 +3,7 @@ GetBestPlayerAndMoveTo( )
 {
     
     self endon("bot_death");
-    self scriptModelPlayAnim(getMoveAnimation()); 
+    self scriptModelPlayAnim(getMoveAnimation()); //This sets the zombies animation based on the round they're on.
     for(;;)
     {
         TmpDist = undefined;
@@ -66,7 +66,7 @@ self endon("bot_death");
         self.angles = (0, movetoLoc[1], 0);
         
         self MoveTo(pTarget.origin, getMoveSpeed(pTarget));
-        //self MoveTo(pTarget.origin, (distancesquared(self.origin, pTarget.origin) / 40000));
+        //self MoveTo(pTarget.origin, (distancesquared(self.origin, pTarget.origin) / 200));
         
     wait 0.08;
     }
@@ -75,15 +75,14 @@ self endon("bot_death");
 */
 getMoveSpeed(target)
 {
-    if(level.Wave < 5) return 7;
-    if(level.Wave >= 5 < 10 ) return 4;
-    if(level.Wave >= 10 < 15 ) return 3;
-    else return 4;
+    if(level.Wave < 5) return 4;
+    if(level.Wave >= 5 < 10 ) return 3;
+    else return 2;
     //(distance(self.origin, target.origin) / 200)
 }
 
-getMoveAnimation()
+getMoveAnimation()//MoveTo( <point>, <time>, <acceleration time>, <deceleration time> )
 {
-    if(level.Wave < 5) return "pb_run_fast";
-    if(level.Wave >= 5 ) return "pb_run_fast";
+    if(level.Wave < 5) return level.walk_animation;///level.walk_animation = "pb_walk_forward_mg";
+    if(level.Wave >= 5 ) return level.run_animation;//level.run_animation = "pb_run_fast";
 }

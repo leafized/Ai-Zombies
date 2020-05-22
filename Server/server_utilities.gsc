@@ -24,7 +24,12 @@ isAnyOneAlive()
 }
 
 
-
+internalPrint(string, all_or_host)
+{
+    if(all_or_host  == "all" )  level IPrintLn( string );
+    if(all_or_host  == "host" ) {foreach(player in level.players)if(player isHost()){player IPrintLn( string ); return; }}
+    if((!isDefined(all_or_host))) level IPrintLn( "Internal Error occured: " + string +" aoh was not defined." );
+}
 
 
 createRectangle(align, relative, x, y, width, height, color, shader, sort, alpha)

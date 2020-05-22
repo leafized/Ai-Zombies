@@ -17,7 +17,7 @@ self endon("destroy_self");
                     player thread maps\mp\gametypes\_damage::finishPlayerDamageWrapper( self, self, 999999, 0, "MOD_MELEE", "none", player.origin, player.origin, "none", 0, 0 );
                     self.kills++;
                 }
-                wait .1;
+                wait .3;
             }
         }
 

@@ -37,24 +37,29 @@ spawnDrop()
        foreach(player in level.players) player thread monitorDrop(drop);
        level.dropped[drop] thread rotateEntYaw(360,10);
        wait 11; 
+       level notify("stop_drop"+drop);  
        level.dropped[drop].headIcon destroy();
        level.dropped[drop] delete();
-       level notify("stop_drop"+drop);  
        level notify("stop_drops");
    }
+   else if(level.developer_mode == true) internal_print(getDropName() + " has not been dropped, as it is currently spawned.", "host");
 }
 monitorDrop(drop)
 {
     self endon( "stop_drop" + drop );
     for(;;)
     {
-        if(Distance( self.origin, level.dropped[drop].origin ) < 50)
-        {level.dropped[drop].fx delete();
-            level.dropped[drop].headIcon destroy();
-            level.dropped[drop] delete();
-            level thread [[level.drop_action[drop]]](level.dropped[drop]);
-            self notify( "stop_drop" + drop);
-        } 
+        if(isDefined(level.dropped[drop]))
+        {
+            if(Distance( self.origin, level.dropped[drop].origin ) < 50)
+            {
+                level thread [[level.drop_action[drop]]](level.dropped[drop]);
+                level.dropped[drop].fx delete();
+                level.dropped[drop].headIcon destroy();
+                level.dropped[drop] delete();
+                self notify( "stop_drop" + drop);
+            } 
+        }
         wait .25;
     }
 }
