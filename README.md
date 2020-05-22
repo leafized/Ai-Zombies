@@ -3,10 +3,7 @@ THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
 Supported Maps: Underpass, Rust
 
-When you download a new version, please delete all old files. This can cause issues of functions being defined when they're not supposed to. I have removed many folders which causes duplicate files.
-
-THIS IS A PUBLIC RELEASE.
-
+** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
 TO RECORDERS: PLEASE KEEP IN MIND THAT THIS IS IN BETA 
 
 TO DEVELOPERS: FEEL FREE TO CONTRIBUTE TO A FUNCTION, AND TELL ME ABOUT IT.
@@ -17,6 +14,27 @@ NOTE: IT IS BEST TO PLAY SOLO AT THE MOMENT, BUT, MULTIPLE PLAYERS IS OKAY.
 THANK YOU FOR READING, ENJOY YOUR GAMEPLAY
 
 Changelog**
+
+0.12.2b LIVE CHANGE
+[Drops]
+- Fixed a bug allowing a drop to activate regardless of if a user picks it up. This is due to the game automatically returning true if the variable is no longer defined.
+- Fixed a bug relating to UI.
+-
+
+[Player]
+- Tweaks to player 
+
+[AI Zombies]
+- Changes to the way speed is handled. 
+- Changes to the animation played when an AI targets the user (Round Based System)
+- Preparation for "Crouched" AI, which will spawn similarly to how dogs work in Zombies.
+
+[General] Updated developer_settings.gsc
+- Allowed for more customization
+- Setup for user to be able to add their own Custom map, which will override the original map.
+
+
+
 0.11.0b LIVE CHANGE
 
 [Drops]
