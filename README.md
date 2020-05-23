@@ -1,25 +1,32 @@
-# Ai Zombies
+# Ai Zombies | Click View on Github and Download as Zip! Make sure to read this!
 THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
-Supported Maps: Underpass, Rust
+
+Supported Maps: Underpass, Rust, Terminal
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
-TO RECORDERS: PLEASE KEEP IN MIND THAT THIS IS IN BETA 
-
-TO DEVELOPERS: FEEL FREE TO CONTRIBUTE TO A FUNCTION, AND TELL ME ABOUT IT.
-
-NOTE: IT IS BEST TO PLAY SOLO AT THE MOMENT, BUT, MULTIPLE PLAYERS IS OKAY.
 
 
-THANK YOU FOR READING, ENJOY YOUR GAMEPLAY
 
-Changelog**
+0.13.0b LIVE CHANGE
+[Drops]
+- Fixed a small bug.
+
+[Player]
+- Added functions to prepare for Revive System.
+
+[AI] 
+- Changes to AI speed, will now feel more natural.
+- Changes will be made to models. They will have more than one model.
+- Changes to the way an AI decides to move.
+
+[MAP]
+- Added Terminal as a map. BETA
 
 0.12.2b LIVE CHANGE
 [Drops]
 - Fixed a bug allowing a drop to activate regardless of if a user picks it up. This is due to the game automatically returning true if the variable is no longer defined.
 - Fixed a bug relating to UI.
--
 
 [Player]
 - Tweaks to player 
