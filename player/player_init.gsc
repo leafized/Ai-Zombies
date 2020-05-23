@@ -1,7 +1,7 @@
 init_spawned_player()
 {
-    if(isDefined(level.playerSpawnPoint[0]))
-    self SetOrigin( level.playerSpawnPoint[0] );
+    if(isDefined(level.playerSpawnPoints[0]))
+    self setOrigin(getSpawnPoints());
     self FreezeControls( false );
     self TakeAllWeapons();
     if( level.zState != "intermission" && level.zState != "losted" )

@@ -19,9 +19,9 @@
  init()
 {
 
-     level thread loadMap();//This function checks if the map is in the supported list.
+     level loadMap();//This function checks if the map is in the supported list.
 
-     level thread precacheItems();
+     level precacheItems();
     level thread onPlayerConnect();
 }
 

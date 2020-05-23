@@ -1,7 +1,7 @@
 loadMap(type)
 {
-    level.map_list     = ["mp_rust", "mp_underpass"];
-    level.map_function = [::map_mp_rust, ::map_mp_underpass];
+    level.map_list     = ["mp_rust", "mp_underpass", "mp_terminal"];
+    level.map_function = [::map_mp_rust, ::map_mp_underpass, ::map_mp_terminal];
     currentMap         = getDvar("mapname");
     
     
