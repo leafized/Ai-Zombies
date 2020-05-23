@@ -26,10 +26,10 @@ init_zm_developer_settings()
     //Brightness --------------
     level.brightness = 0;
     ///Prices  ----------------
-    level.store_item_price_weapon = 1250;
+    level.store_item_price_weapon = 1000;
     level.store_item_price_ammo   = 750;
     level.store_item_price_armor  = 2500;
-    level.store_item_price_pap    = 3000;
+    level.store_item_price_pap    = 3500;
     //Perk Prices
     level.store_item_price_perk["Reload"] = 2000;
     //Player Variables --------------
@@ -54,7 +54,7 @@ init_zm_developer_settings()
     /* Tweakable */
     level.ZombieHealth = 100;//can change //Zombes / AI Scripts / zombie_monitor_health.gsc
     level.destructibleSpawnedEntsLimit += 50;
-    level.zombie_kill_points       = 30;//Base points a player recieves when killing zombies
+    level.zombie_kill_points       = 70;//Base points a player recieves when killing zombies
     level.zombie_hit_points        = 10;//Base hit points when a player damages a zombie.
     level.zombies_max_spawn        = 20;//Maximum zombies that can be spawned at onen time.
     level.zombie_speed_multiplier  = 1;//Zombie Speed Multiplier, change to make zombies move faster.

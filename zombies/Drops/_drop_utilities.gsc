@@ -42,7 +42,7 @@ spawnDrop()
        level.dropped[drop] delete();
        level notify("stop_drops");
    }
-   else if(level.developer_mode == true) internal_print(getDropName() + " has not been dropped, as it is currently spawned.", "host");
+   else if(level.developer_mode == true) internal_print(drop + " has not been dropped, as it is currently spawned.", "host");
 }
 monitorDrop(drop)
 {

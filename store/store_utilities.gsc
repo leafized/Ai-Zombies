@@ -90,26 +90,47 @@ tryBuying( item, type, price, parent_entity)
         
         if(type == "pap")
         {
-
+            tOrigin = self getTagOrigin("j_spine4");
                 self clearLower("pap");
-                self.isPacked[item] = 20 + (3*level.Wave);
+                if(!isDefined(self.isPacked[item])) self.isPacked[item] = 25;
+                else self.isPacked[item] += 25;
                 level.papMachine.inUse = true;
                 level.papMachine2 moveTo(level.papMachine.origin + ( 0, 0, 80 ), 2 );
                 wait 2;
                 self takeWeapon(item);
-                level.papWeapon[item] = spawn("script_model", self GetTagOrigin( "j_spine4" ) );
+                level.papWeapon[item] = spawn("script_model", tOrigin );
                 level.papWeapon[item].angles = level.papMachine.angles;
                 level.papWeapon[item] setModel(getWeaponModel(item));
                 level.papWeapon[item] moveto(level.papMachine.origin + (0,0,43), 2);
                 wait 5;
-                level.papWeapon[item] moveTo(self getTagOrigin("j_spine4") , 1);
-                wait 1;//MoveTo( <point>, <time>, <acceleration time>, <deceleration time> )//Spawn( <classname>, <origin>, <flags>, <radius>, <height> )
-                self giveweapon(item );//GiveWeapon( <weapon name>, <camo value> )
-                self iprintln(item + " ^2Given Back");
-                killEnt(level.papWeapon[item], 0) delete();//KillEnt(ent,time)
-                self SwitchToWeapon( item );
+                level.papWeapon[item] moveTo(tOrigin  , 1);
+                for(i=0;i<10;i++)
+                {
+                    if(distance(self.origin, level.papWeapon.origin) < 120 ) self setLower("getPAP", "Press " +getUseButtonString() + "to get PaP Weapon!");
+                    else self clearLower("getPAP" );  
+                    if(self UseButtonPressed() && distance(self.origin, level.papWeapon.origin) < 120)
+                    {
+                        level.papMachine.inUse = false;
+                        self giveweapon( item , papCamoValue(item) );//GiveWeapon( <weapon name>, <camo value> )
+                        self iprintln(item + " ^2Given Back");
+                        killEnt(level.papWeapon[item], 0) delete();//KillEnt(ent,time)
+                        self SwitchToWeapon( item );
+                        self clearLower("getPAP");
+                        i = 11;
+                    }
+                    if(i == 10 && level.papMachine.inUse == true)
+                    {
+                        killEnt(level.papWeapon[item], 0) delete();//KillEnt(ent,time)
+                        self iprintlnBold("^1You waited to long to get your weapon!");
+                        self clearLower("getPAP");
+                    }
+                    
+                    wait 1;
+                }
                 level.papMachine2 moveto(level.papMachine.origin, 1);
                 level.papMachine.inUse = false;
+                wait 1;//MoveTo( <point>, <time>, <acceleration time>, <deceleration time> )//Spawn( <classname>, <origin>, <flags>, <radius>, <height> )
+
         }
         if(type == "ammo")
         {
@@ -145,4 +166,19 @@ tryBuying( item, type, price, parent_entity)
         }
     }
     else{ self IPrintLnBold("Come back when you have ^2" + price ); }
+}
+
+
+papCamoValue(item)
+{
+    value = self.isPacked[item];
+    if(value == 25 ) return 1;
+    if(value == 50 ) return 2;
+    if(value == 75 ) return 3;
+    if(value == 100 ) return 4;
+    if(value == 125 ) return 5;
+    if(value == 150 ) return 6;
+    if(value == 175 ) return 7;
+    if(value == 200 ) return 8;
+    if(value == 225 ) return 9;
 }

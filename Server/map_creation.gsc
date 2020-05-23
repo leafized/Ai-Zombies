@@ -1,4 +1,4 @@
-
+/*
 CreatePlate(corner1, corner2, arivee, angle, time)
 {
     W = Distance((corner1[0], 0, 0), (corner2[0], 0, 0));
@@ -898,3 +898,4 @@ KillBelow(z)
         wait .15;
     }
 }
+*/
