@@ -49,10 +49,11 @@ init_spawned_player()
         self giveWeapon(map_gun);
     }
     
-    self thread MysteryBox();
-    self thread AmmoBoxMonitor();
-    self thread ArmourBoxMonitor();
-    self thread perkMonitor();
+    if(isDefined(level.packRB)) self thread MysteryBox();
+    if(isDefined(level.ammoBox)) self thread AmmoBoxMonitor();
+    if(isDefined(level.armorBox)) self thread ArmourBoxMonitor();
+    if(isDefined(level.perkBox)) self thread perkMonitor();
+    if(isDefined(level.papMachine)) self thread papMonitor();
     self FreezeControls( false );
     self.score = level.player_starting_money;
     self.pers["score"] = level.player_starting_money;

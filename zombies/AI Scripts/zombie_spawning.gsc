@@ -9,23 +9,27 @@ CreateBotWave( )
     level.ZombieHealth += (5*level.Wave);
     level.zState = "playing";
 
-    level thread ZombieMarkers();
     //internalPrint(string,all_or_host)
     level notify("crate_gone");
-
+    //if(zm_no_spawn) return;
     for( i = 0; i < level.BotsForWave; i++ )
     {
         while(ZombieCount() >= level.zombies_max_spawn)
         if(level.RealSpawnedBots < level.BotsForWave)
             level.RealSpawnedBots++;
     
-            level.zombies[i] = spawn("script_model", level.zmSpawnPoints[randomInt(4)]);
-            level.zombies[i] setModel(GetSpawnModel());
+        level.zombies[i] = spawn("script_model", level.zmSpawnPoints[randomInt(level.zmSpawnPoints.size - 1)]);
+        level.zombies[i] setModel(level.zmModels[ RandomIntRange( 0,  level.zmModels.size ) ] );
+            
         level.zombies[i].head = spawn("script_model",level.zombies[i] getTagOrigin("j_spine4"));//getTag
-        level.zombies[i].head setModel(level.zmHeads[0]);
+        level.zombies[i].head setModel(level.zmHeads[ RandomIntRange(0,   level.zmHeads.size ) ] );
         level.zombies[i].head.angles = (270,0,270);
         level.zombies[i].head LinkTo( level.zombies[i], "j_spine4" );
         level.zombies[i].isZombie = true;
+        
+        
+        
+        
         level.zombies[i].crate1 = spawn("script_model", level.zombies[i].origin + (0,0,30) ); 
         level.zombies[i].crate1 setModel("com_plasticcase_enemy");
         level.zombies[i].crate1 Solid();

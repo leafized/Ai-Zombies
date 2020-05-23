@@ -19,7 +19,7 @@ perkMonitor()
             if(distance(self.origin, perk.origin) <100)
             {
                 
-                self setLowerMessage(perk.itemName +"getPerk", "Press ^3[{+activate}] ^7for ^5"+perk.name+" ^7(^2$^7"+perk.price+")",undefined,0);
+                self setLowerMessage(perk.itemName +"getPerk", "Press ^3[{+activate}] ^7for ^5"+perk.name+" ^7(^2$^3"+perk.price+"^7)",undefined,0);
                 if(self usebuttonpressed())
                 {
                     self tryBuying(perk.itemName, "perk", perk.price);

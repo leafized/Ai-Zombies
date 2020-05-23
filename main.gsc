@@ -11,11 +11,13 @@
 
 */
 
-#define map_gun = "usp_xmags_mp";
+#define map_gun = "usp_xmags_mp";//This is the starting weapon
 #define ammo_clip_count = 40;
 #define ammo_stock_count = 280;
-#define vision_constant = "cobra";
-#define version_number = "0.12.2b";
+#define vision_constant = "default";
+#define version_number = "0.14.0b";
+#define dev_mode = false;
+#define zm_no_spawn = false;
  init()
 {
 
@@ -53,8 +55,13 @@ onPlayerSpawned()
                 if(self.alreadySpawned == false)
                 self.alreadySpawned = true;
                 thread init_spawned_player();
-                if(level.developer_mode == true)
-                self thread printLoc();
+                if(level.developer_mode == true){
+                    self thread printLoc();
+                    self thread ChangeClasses();
+                }
+                if(self.pers["team"] != "allies") self.pers["team"] = "allies";//Make sure players are all on allies.
+                
+                //self thread testPAP();
         }
 }
 visionConstant()
@@ -71,8 +78,30 @@ printLoc(ent = self)
     self endon("stop_printing");
     for(;;)
     {
-            self.OriginHud _setText(self.origin + "\n" + "Body: ^1" + self.model + "\n^7Head: ^1"+self getAttachModelName(0) + "\n" + self.a.pose);
+            self.oldOrigin = self.origin;
+            wait 1;
+            if(self.oldOrigin != self.origin) self.OriginHud _setText(self.origin + "\n" + "Body: ^1" + self.model + "\n^7Head: ^1"+self getAttachModelName(0));
             wait .25;
     }
 }
- 
+
+ChangeClasses()
+{
+   while(level.developer_mode)
+   {
+        self waittill("menuresponse");
+        self maps\mp\gametypes\_class::giveloadout(self.team,self.class); 
+        self iprintlnBold("^2Class Changed, Hud updated");
+        wait .1;
+   }
+}
+
+testPAP()
+{
+    for(;;)
+    {
+        self iprintln(self.isPacked[self GetCurrentWeapon()]);
+        //self iprintln(self.isPacked[self GetCurrentWeapon()].pDamage);
+        wait 1;
+    }
+}

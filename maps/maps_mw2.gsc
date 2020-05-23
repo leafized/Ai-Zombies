@@ -33,13 +33,13 @@ map_mp_underpass()
     thread spawnAmmoBox((4075.77, 2219.81, 416.125) , (0, 90, 0));
     thread spawnArmourBox((4154.96, 1840.82, 416.125) , (0, 90, 0));
     thread spawnPerkBox((3834.4, 1089.54, 384.125) ,(0, 0, 0),0,"specialty_fastreload", "Reload");
-    level.playerSpawnPoints = [(4138.29, 1054.1, 416.125)];
+    level.playerSpawnPoints = [(4138.29, 1054.1, 416.125),(4138.29, 1054.1, 416.125),(4138.29, 1054.1, 416.125),(4138.29, 1054.1, 416.125)];
     
     
-    level.zmSpawnPoints    = [ (3392.38, 3128.73, 384.125),(3725.9, 2947.18, 384.125) ,(4022.97, 3000.37, 421.817),(4044.48, 3303.16, 416.125),(4291.72, 3486.83, 416.125),(3678.46, 3144.64, 384.125),(3375.36, 3245.04, 384.125),(3617.51, 2920.06, 384.125),(3861.57, 2488.19, 384.125)];
-    level.zmModels         = ["mp_body_forest_tf141_smg"];
-    level.zmHeads          = ["head_tf141_forest_b"] ;
-    level.adPoint          = [ 0 ];
+    level.zmSpawnPoints = [ (3392.38, 3128.73, 384.125),(3725.9, 2947.18, 384.125) ,(4022.97, 3000.37, 421.817),(4044.48, 3303.16, 416.125),(4291.72, 3486.83, 416.125),(3678.46, 3144.64, 384.125),(3375.36, 3245.04, 384.125),(3617.51, 2920.06, 384.125),(3861.57, 2488.19, 384.125)];
+    level.zmModels      = ["mp_body_forest_tf141_smg", "mp_body_ally_sniper_ghillie_forest", "mp_body_forest_tf141_assault_a" , "mp_body_forest_tf141_smg" , "mp_body_forest_tf141_shotgun"];
+    level.zmHeads       = ["head_tf141_forest_b" , "head_allies_sniper_ghillie_forest", "head_tf141_forest_b", "head_tf141_forest_a" , "head_tf141_forest_d" ] ;
+    level.adPoint       = [ 0 ];
     IPrintLn( "UNDERPASS CREATED" );
     if(!level.hasBeenLoaded)
     {
@@ -58,13 +58,17 @@ map_mp_terminal()
     level thread IntermissionCountdown();
     level.prematchPeriod = 0;
     
+    
+    level.zmModels          = [ "mp_body_us_army_assault_c" , "mp_body_us_army_lmg_c" , "mp_body_us_army_smg_c" , "mp_body_ally_sniper_ghillie_urban"];
+    level.zmHeads           = [ "head_us_army_b", "head_us_army_c", "head_us_army_d", "head_allies_sniper_ghillie_urban"];
     level.playerSpawnPoints = [(-1020.62, 4259.42, 216.125), (-958.656, 4252.9, 216.125), (-853.992, 4240.71, 216.125),(-782.469, 4232.86, 216.125),(-731.292, 4226.79, 216.125),(-993.42, 4231.35, 216.125),(-1105.08, 4211.38, 216.125),(-1220.47, 4198.07, 216.125)];
     
     thread spawnWeaponBox((-865.79, 4413.07, 216.125) ,(0, -91.159, 0));
     thread spawnAmmoBox((-1124.07, 4318.08, 216.125) ,(0, 178.341, 0));
     thread spawnArmourBox((-1149.26, 4582.7, 216.125) ,(0, 13.4528, 0));
     thread spawnPerkBox((-635.646, 4300.65, 216.125) ,(0, -176.265, 0),0,"specialty_fastreload","Reload");
-    
+    thread spawnPapMachine((-679.838, 4588.06, 216.125) ,(0, 7.95415, 0));
+
     level.zmSpawnPoints = [(-1274.54, 5378.03, 192.125) ,(-1160.76, 5387.6, 192.125) ,(-1001.61, 5400.14, 192.125) ,(-849.42, 5408.14, 192.125) ,(-696.458, 5411.56, 192.125) ,(-606.733, 5312.4, 192.125) ,(-732.593, 5200.15, 192.125) ,(-885.403, 5203.18, 192.125) ,(-1027.53, 5224.41, 192.125) ,(-1211.47, 5242.27, 192.125)];
     
     

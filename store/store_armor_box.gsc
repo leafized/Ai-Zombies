@@ -15,7 +15,7 @@ ArmourBoxMonitor()
             if(distance(self.origin, level.armorBox.origin) <100)
             {
                 
-                self setLowerMessage("getArmor", "Press ^3[{+activate}] ^7for ^5Armor ^7(^2$^7"+level.store_item_price_armor+")",undefined,0);
+                self setLowerMessage("getArmor", "Press ^3[{+activate}] ^7for ^5Armor ^7(^2$^3"+level.store_item_price_armor+"^7)",undefined,0);
                 if(self usebuttonpressed())
                 {
                     self tryBuying(self.health, "armor", level.store_item_price_armor);

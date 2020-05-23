@@ -15,7 +15,7 @@ AmmoBoxMonitor()
             if(distance(self.origin, level.ammoBox.origin) <100)
             {
                 
-                self setLowerMessage("getAmmo", "Press ^3[{+activate}] ^7for ^5Ammo Refill ^7(^2$^7"+level.store_item_price_ammo+")",undefined,0);
+                self setLowerMessage("getAmmo", "Press ^3[{+activate}] ^7for ^5Ammo Refill ^7(^2$^3"+level.store_item_price_ammo+"^7)",undefined,0);
                 if(self usebuttonpressed())
                 {
                     self tryBuying(self GetCurrentWeapon(), "ammo", level.store_item_price_ammo);

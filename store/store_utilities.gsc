@@ -87,7 +87,30 @@ tryBuying( item, type, price, parent_entity)
             level.packRB.isBusy = false;
             level.packRB.user   = undefined;
         }
-            
+        
+        if(type == "pap")
+        {
+
+                self clearLower("pap");
+                self.isPacked[item] = 20 + (3*level.Wave);
+                level.papMachine.inUse = true;
+                level.papMachine2 moveTo(level.papMachine.origin + ( 0, 0, 80 ), 2 );
+                wait 2;
+                self takeWeapon(item);
+                level.papWeapon[item] = spawn("script_model", self GetTagOrigin( "j_spine4" ) );
+                level.papWeapon[item].angles = level.papMachine.angles;
+                level.papWeapon[item] setModel(getWeaponModel(item));
+                level.papWeapon[item] moveto(level.papMachine.origin + (0,0,43), 2);
+                wait 5;
+                level.papWeapon[item] moveTo(self getTagOrigin("j_spine4") , 1);
+                wait 1;//MoveTo( <point>, <time>, <acceleration time>, <deceleration time> )//Spawn( <classname>, <origin>, <flags>, <radius>, <height> )
+                self giveweapon(item );//GiveWeapon( <weapon name>, <camo value> )
+                self iprintln(item + " ^2Given Back");
+                killEnt(level.papWeapon[item], 0) delete();//KillEnt(ent,time)
+                self SwitchToWeapon( item );
+                level.papMachine2 moveto(level.papMachine.origin, 1);
+                level.papMachine.inUse = false;
+        }
         if(type == "ammo")
         {
             self giveMaxAmmo(item);
@@ -114,13 +137,12 @@ tryBuying( item, type, price, parent_entity)
         {
             if(self.hasItem[item])
             {
-                self setLower("nah", "^1YOU ALREADY OWN THIS ITEM" );
-                wait .1; self clearLower("nah", .2);
+                self IPrintLnBold("nah", "You already own this item." );
             }
             self setPerk(item);
             setPerkEdit(item);
             wait .1;
         }
     }
-    else{ self setLower( "nah", "Come back when you have ^2" + price ); wait 2; self clearLower( "nah" ); }
+    else{ self IPrintLnBold("Come back when you have ^2" + price ); }
 }

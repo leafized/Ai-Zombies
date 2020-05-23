@@ -6,13 +6,14 @@ pTemp = "";
     {
 
         self.crate1 waittill("damage", damage, attacker, direction, point, type, tagName,i1,i2,i3,sWeapon);
-        
         attacker thread maps\mp\gametypes\_damagefeedback::updateDamageFeedback(tagName);
-        if(isDefined(attacker.isUpgrade[attacker GetCurrentWeapon()]) || level.instaKillActive == true)
-        self.crate1.health -= damage + level.damage_scaler;
-        else
+       
+        if(level.instaKillActive == true)
+        self.crate1.health -= damage +level.damage_scaler;
+        else 
         self.crate1.health -= damage;
        
+        self.crate1.health -= is_packed( attacker );
         attacker.score+= level.zombie_hit_points;
         attacker.pers["score"]+= level.zombie_hit_points;
         
@@ -43,6 +44,14 @@ pTemp = "";
 
     wait 0.05;
     }
+}
+is_packed(client)
+{
+    if(isDefined(client.isPacked[client getcurrentWeapon()]))
+    {
+        return client.isPacked[client getcurrentWeapon()];
+    }
+    return 0;
 }
 
 monitorOrigin( entity )

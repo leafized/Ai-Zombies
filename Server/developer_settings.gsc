@@ -2,7 +2,9 @@ init_zm_developer_settings()
 {
     //getSpawnPoints();
     init_menu_weapons();// This is for the Weapon UI.
-    level.developer_mode = false; // Only use this if you are debugging.
+    if(isDefined(dev_mode))
+    level.developer_mode = dev_mode; // Only use this if you are debugging.
+    else level.developer_mode = false;
     /* Global Vars */
     //Bots --------------------
     level.MaxWaves          = 50; //can change
@@ -18,17 +20,16 @@ init_zm_developer_settings()
     //Ammo Drop ---------------
     level.AmmoDrop = undefined;
     //Intermission Timer ------
-    level.IntermissionTimeStart = 20;//can change
-    level.IntermissionTime      = 20;
+    level.IntermissionTimeStart = 20;//can change (is the beginning timer)
+    level.IntermissionTime      = 20;//Genera
     level.timer_intermission    = 15;//Amount of time between rounds
     //Brightness --------------
     level.brightness = 0;
     ///Prices  ----------------
-    level.store_item_price_weapon = 1500;
-    level.store_item_price["JUGG"] = 300;
-    level.store_item_price_ammo  = 1500;
-    level.store_item_price_armor = 3000;
-    
+    level.store_item_price_weapon = 1250;
+    level.store_item_price_ammo   = 750;
+    level.store_item_price_armor  = 2500;
+    level.store_item_price_pap    = 3000;
     //Perk Prices
     level.store_item_price_perk["Reload"] = 2000;
     //Player Variables --------------
@@ -40,12 +41,13 @@ init_zm_developer_settings()
     level.shader_store["AMMO"] = "cardicon_bullets_50cal";
     level.shader_store["ARMOR"] = "cardicon_juggernaut_1";
     level.shader_store["OMA2"] = "cardicon_laststand";
+    level.shader_store["PAP"] = "cardicon_fmj";
     
     level.shader_store["Reload"] = "cardicon_redhand";//"specialty_fastreload";
     
-    precacheArray = [level.shader_store["BOX"],level.shader_store["AMMO"],level.shader_store["ARMOR"],level.shader_store["OMA2"],level.shader_store["Reload"]];
-    foreach(shade in precacheArray)
-        PreCacheShader( shade );
+    //precacheArray = [level.shader_store["BOX"],level.shader_store["AMMO"],level.shader_store["ARMOR"],level.shader_store["OMA2"],level.shader_store["Reload"]];
+    foreach(shader in level.shader_store)
+    PreCacheShader( shader );
     //Main Threads
     
 
