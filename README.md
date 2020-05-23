@@ -1,20 +1,13 @@
-# Ai Zombies
+# Ai Zombies | Click View on Github and Download as Zip! Make sure to read this!
 THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
-Supported Maps: Underpass, Rust
+
+Supported Maps: Underpass, Rust, Terminal
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
 
-TO RECORDERS: PLEASE KEEP IN MIND THAT THIS IS IN BETA 
-
-TO DEVELOPERS: FEEL FREE TO CONTRIBUTE TO A FUNCTION, AND TELL ME ABOUT IT.
-
-NOTE: IT IS BEST TO PLAY SOLO AT THE MOMENT, BUT, MULTIPLE PLAYERS IS OKAY.
 
 
-THANK YOU FOR READING, ENJOY YOUR GAMEPLAY
-
-Changelog**
 0.13.0b LIVE CHANGE
 [Drops]
 - Fixed a small bug.
