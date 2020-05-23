@@ -2,11 +2,18 @@
 THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
 
+# NEW MAP :: TERMINAL #
+
 Supported Maps: Underpass, Rust, Terminal
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
 
+0.14.0b LIVE CHANGE
+[STORE]
+- Pack-A-Punch Added! (Terminal Only (until next update))
 
+[AI]
+- Multiple Models now, will make the gameplay more unique.
 
 0.13.0b LIVE CHANGE
 [Drops]
