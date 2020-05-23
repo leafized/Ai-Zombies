@@ -21,10 +21,10 @@ isAnyOneAlive()
     Announcement( "Every One is dead!" );
     level.whowins = true;
     return false;
-}
+}//overflowfix_monitor()
 
 
-internalPrint(string, all_or_host)
+internal_Print(string, all_or_host)
 {
     if(all_or_host  == "all" )  level IPrintLn( string );
     if(all_or_host  == "host" ) {foreach(player in level.players)if(player isHost()){player IPrintLn( string ); return; }}
@@ -542,8 +542,6 @@ overflowfix_monitor()
             level.overflowElem ClearAllTextAfterHudElem();
             level.strings = [];
             level notify("overflow_fixed");
-            foreach(player in level.players)
-            player clearCustomMessage();
         }
         wait 0.01; 
     }
@@ -578,7 +576,7 @@ kill_popUp( amount, bonus, hudColor, glowAlpha )
     self.hud_scorePopup.glowAlpha = glowAlpha;
     self.hud_scorePopup setValue(self.xpUpdateTotal);
     self.hud_scorePopup.x     = 0;
-    self.hud_scorePopup.y     = 0;
+    self.hud_scorePopup.y     = 10;
     self.hud_scorePopup.alpha = 0.85;
     //self.hud_scorePopup thread maps\mp\gametypes\_hud::fontPulse( self );
 
@@ -603,7 +601,7 @@ kill_popUp( amount, bonus, hudColor, glowAlpha )
 
     self.hud_scorePopup fadeOverTime( 0.75 );
     self.hud_scorePopup.alpha = 0;
-    
+    //SetEntHeadIcon(offset,shader,keepPosition,is_drop,drop)
     self.xpUpdateTotal = 0;     
 }
 
@@ -617,8 +615,6 @@ addLower( name, text, font, size )
     {
         if ( message.name == name )
         {
-            if ( message.text == text && message.priority == priority )
-                return;
 
             newMessage = message;
             break;
@@ -633,7 +629,6 @@ addLower( name, text, font, size )
 
     newMessage.name      = name;
     newMessage.text      = text;
-    newMessage.time      = time;
     newMessage.fontScale = size;
     newMessage.font      = font;
 }
@@ -733,7 +728,7 @@ RedFadeToBlue(id)
 
 init_menu_weapons()
 {
-    //Create List with all base weapon ids
+    //Create List with all base weapon ids CreateBotWave()
     level.table_weaponList = [];
     for(i=0;i<=149;i++)
     {

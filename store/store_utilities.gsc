@@ -1,4 +1,4 @@
-SetEntHeadIcon(offset,shader,keepPosition, is_drop, drop)
+SetEntHeadIcon(offset,shader,keepPosition )
 {
     if(isDefined(offset)) 
     {
@@ -8,7 +8,7 @@ SetEntHeadIcon(offset,shader,keepPosition, is_drop, drop)
     {
         self.entityHeadIconOffset = (0,0,0);
     }
-    headIcon          = NewHudElem(player);
+    headIcon          = NewHudElem(self);
     headIcon.archived = true;
     headIcon.x        = self.origin[0] + self.entityHeadIconOffset[0];
     headIcon.y        = self.origin[1] + self.entityHeadIconOffset[1];

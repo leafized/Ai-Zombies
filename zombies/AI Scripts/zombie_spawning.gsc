@@ -10,14 +10,9 @@ CreateBotWave( )
     level.zState = "playing";
 
     level thread ZombieMarkers();
-
+    //internalPrint(string,all_or_host)
     level notify("crate_gone");
 
-    if(player isHost())
-    {
-        player iprintln("Total " + level.BotsForWave + " Zombies in Wave");
-        player PlayLocalSound("flag_spawned");
-    }
     for( i = 0; i < level.BotsForWave; i++ )
     {
         while(ZombieCount() >= level.zombies_max_spawn)

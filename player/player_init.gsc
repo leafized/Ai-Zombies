@@ -1,5 +1,6 @@
 init_spawned_player()
 {
+    if(isDefined(level.playerSpawnPoint[0]))
     self SetOrigin( level.playerSpawnPoint[0] );
     self FreezeControls( false );
     self TakeAllWeapons();
@@ -69,5 +70,5 @@ init_spawned_player()
     wait 2; 
     
     self clearLower("intro");
-    
+    //addLower(name,text,font,size)
 }

@@ -15,28 +15,14 @@
 #define ammo_clip_count = 40;
 #define ammo_stock_count = 280;
 #define vision_constant = "cobra";
-#define version_number = "0.11.1b";
+#define version_number = "0.12.2b";
  init()
 {
 
      level thread loadMap();//This function checks if the map is in the supported list.
 
      level thread precacheItems();
-     //level thread IntermissionCountdown();
-    //mapSetup();
     level thread onPlayerConnect();
-}
-
-loopAd()
-{
-    level endon("disconnect");
-    for(;;)
-    {
-        IPrintLn( "^7Youtube.com/^1Leafized" );
-        IPrintLn( "^5http://infinityloader.com" );
-        
-        wait 15;
-    }
 }
 
 onPlayerConnect()
@@ -73,7 +59,7 @@ onPlayerSpawned()
 }
 visionConstant()
 {
-    for(;;)
+    for(;;)//precacheshader
     {
         self VisionSetNakedForPlayer( vision_constant , 0 );
         wait .25;

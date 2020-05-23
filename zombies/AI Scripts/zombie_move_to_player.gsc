@@ -75,9 +75,9 @@ self endon("bot_death");
 */
 getMoveSpeed(target)
 {
-    if(level.Wave < 5) return 4;
-    if(level.Wave >= 5 < 10 ) return 3;
-    else return 2.5;
+    if(level.Wave < 5) return ((distance(self.origin, target.origin) / (100 + (level.Wave * 5) ) ) );
+    if(level.Wave >= 5 < 10 ) return ((distance(self.origin, target.origin) / (160 + (level.Wave * 3) ) ) );
+    else return ((distance(self.origin, target.origin) / (180 + (level.Wave * 2) ) ) );
     //(distance(self.origin, target.origin) / 200)
 }
 
