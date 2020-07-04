@@ -2,9 +2,9 @@
 THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
 
-# NEW MAP :: TERMINAL #
 
-Supported Maps: Underpass, Rust, Terminal
+``Supported Maps: Underpass, Rust, Terminal``
+`https://github.com/leafized/Ai-Zombies/releases/ for the latest release download!` 
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
 
