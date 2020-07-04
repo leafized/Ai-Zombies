@@ -128,20 +128,7 @@ KillEnt( ent, time )
     ent delete();
     ent destroy();
 }
-multikill()
-{
-if(!isDefined(self.multi))
-self.multi = 0;
 
-        self.multi++;
-        wait 0.5;
-        if(self.multi > 1)
-        {
-            self SayAll("I got a multikill! ^3" + self.multi + " ^7kills!");
-        }
-        self.multi = 0;
-}    
-    
 ZombieCount()
 {
 zombCount = 0;

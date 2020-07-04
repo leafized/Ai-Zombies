@@ -504,10 +504,10 @@ fix_string()
         }
     }
 }
-OverFlowTest(testFix = true)
+OverFlowTest()
 {
     self endon("stop_test");
-    self.testText = createText("default",2.0,"CENTER","CENTER",0,0,0,(1,0,0),1,(0,0,0),0);
+    self.testText = createText("default",2.0,"CENTER","TOP",0,0,0,(1,0,0),1,(0,0,0),0);
     i             = 0;
     for(;;)
     {

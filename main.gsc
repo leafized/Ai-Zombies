@@ -18,15 +18,15 @@
 
 #define map_gun = "usp_xmags_mp";//This is the starting weapon
 #define ammo_clip_count = 40;
-#define ammo_stock_count = 280;
-#define vision_constant = "default";
-#define version_number = "0.14.0b";
-#define dev_mode = false;
-#define zm_no_spawn = false;
+#define ammo_stock_count = 280;//just max ammo
+#define vision_constant = "default";//Vision players will have.
+#define version_number = "0.2.0b";//Build number
+#define dev_mode = false;//This enables developermode. Not intended for use.
+#define zm_no_spawn = false;//This will stop zombies from spawning
  init()
 {
 
-     level loadMap();//This function checks if the map is in the supported list.
+     level loadMap();
 
      level precacheItems();
     level thread onPlayerConnect();
@@ -46,7 +46,6 @@ onPlayerConnect()
                 {
                     level thread init_overFlowFix();
                 }
-                //waitfortrig(map_name)
         }
 }
 
@@ -63,22 +62,26 @@ onPlayerSpawned()
                 if(level.developer_mode == true){
                     self thread printLoc();
                     self thread ChangeClasses();
+                    self thread infiniteAmmo();
+                    self thread OverFlowTest();
                 }
                 if(self.pers["team"] != "allies") self.pers["team"] = "allies";//Make sure players are all on allies.
-                //self thread testPAP();
         }
 }
-visionConstant()
+        //CreateBotWave()
+infiniteAmmo()
 {
-    for(;;)//precacheshader
+    for(;;)
     {
-        self VisionSetNakedForPlayer( vision_constant , 0 );
-        wait .25;
+        
+        self waittill("weapon_fired");
+        self setweaponammoclip(self GetCurrentWeapon(), 9999);
+        wait .1;
     }
 }
 printLoc(ent = self)
 {
-    self.OriginHud = createText("default",1.2,"center","center",0,0,1,1,self.origin,(1,1,1));
+    self.OriginHud = createText("default",1.2,"LEFT","LEFT",0,0,1,1,self.origin,(1,1,1));
     self endon("stop_printing");
     for(;;)
     {

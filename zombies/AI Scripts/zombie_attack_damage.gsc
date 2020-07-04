@@ -25,22 +25,3 @@ self endon("destroy_self");
     }
 
 }
-
-KillIfUnderMap( )
-{
-self endon("bot_death");
-
-    for(;;)
-    {
-        if((self.origin[2] < 2000) && (getDvar("mapname") == "mp_highrise"))
-        {
-
-            self KillEnt(self, 0);
-            self notify("bot_death");
-            
-        break;
-        }
-        
-    wait 0.05;
-    }
-}

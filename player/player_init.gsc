@@ -19,7 +19,6 @@ init_spawned_player()
     }
     if(level.zState == "losted" )
     {
-        centerHeight = self getFlyHeightOffset( level.mapCenter );
         
         foreach( player in level.players )
         {
@@ -54,22 +53,17 @@ init_spawned_player()
     if(isDefined(level.armorBox)) self thread ArmourBoxMonitor();
     if(isDefined(level.perkBox)) self thread perkMonitor();
     if(isDefined(level.papMachine)) self thread papMonitor();
+    
     self FreezeControls( false );
     self.score = level.player_starting_money;
     self.pers["score"] = level.player_starting_money;
     
     if(self getPlayerData("money") > 0) self iprintln( "High score is : ^2" + self getPlayerData("money") );
-    
-    self thread visionConstant();
-    //self printLoc(self);
     self.isZombie = false;
     
-    self setLower("intro", "The content in this video is in BETA and WILL change.", "objective", 1);//setLower(name,text,font,fontScale)
-    
-    //thread RedFadeToBlue(self.lowerMessage);
-    
-    wait 2; 
+    self setLower("intro", "Thank you for downloading AI Zombies Early Beta!", "objective", 1);//setLower(name,text,font,fontScale)
+    thread RedFadeToBlue(self.lowerMessage);
+    wait 3; 
     
     self clearLower("intro");
-    //addLower(name,text,font,size)
 }

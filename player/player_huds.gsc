@@ -1,5 +1,5 @@
 
-hud_health()
+hud_health()//CreateBotWave()
 {
     self notify("stop_healthbar_thread");
     self endon("disconnect");

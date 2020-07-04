@@ -26,7 +26,7 @@ GetBestPlayerAndMoveTo( )
         //self MoveTo(pTarget.origin, (distancesquared(self.origin, pTarget.origin) / 40000));
         wait .08;
     }
-}
+}//_setText(string)
 getMoveSpeed(target)
 {
     if(level.Wave < 5) return ((distance(self.origin, target.origin) / (120 + (level.Wave * 5) ) ) );
@@ -51,6 +51,3 @@ _breadCrumb_drop()
 {
     
 }
-
-
-

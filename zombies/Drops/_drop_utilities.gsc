@@ -26,7 +26,7 @@ init_drop_information()
 
 spawnDrop()
 {
-    drop = level.drop_list[RandomInt( level.drop_list.size )];
+   drop = level.drop_list[RandomInt( level.drop_list.size )];
    if(!isDefined(level.dropped[drop]))
    {
        level endon("stop_drops");
