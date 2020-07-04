@@ -32,7 +32,8 @@ map_mp_underpass()
     thread spawnWeaponBox((4081.45, 2755.1, 416.125) ,(0, 90, 0));
     thread spawnAmmoBox((4075.77, 2219.81, 416.125) , (0, 90, 0));
     thread spawnArmourBox((4154.96, 1840.82, 416.125) , (0, 90, 0));
-    thread spawnPerkBox((3834.4, 1089.54, 384.125) ,(0, 0, 0),0,"specialty_fastreload", "Reload");
+    //thread spawnPerkBox((3834.4, 1089.54, 384.125) ,(0, 0, 0),0,"specialty_fastreload", "Reload");
+    thread spawnpapmachine((3834.4, 1089.54, 384.125) ,(0, 0, 0));
     level.playerSpawnPoints = [(4138.29, 1054.1, 416.125),(4138.29, 1054.1, 416.125),(4138.29, 1054.1, 416.125),(4138.29, 1054.1, 416.125)];
     
     

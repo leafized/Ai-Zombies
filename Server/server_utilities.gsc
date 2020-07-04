@@ -23,6 +23,28 @@ isAnyOneAlive()
     return false;
 }//overflowfix_monitor()
 
+error_localLog(function_name, error)
+{
+    foreach(player in level.players)
+    {
+        if(player IsHost())
+        {
+            player setClientDvar("com_errorTitle", function_name );
+            player setClientDvar("com_errorMessage", error);
+            player OpenPopUpMenu( "error_popmenu" );
+            
+            logPrint(function_name  + " | " + error );
+            player IPrintLn( "Please send your game_mp file to Leafized. " );
+            player IPrintLn( "Located in GAME DIR / MAIN / GAME_MP.log" );
+        }
+    }
+}
+custom_welcome(function_name, error)
+{
+     self setClientDvar("com_errorTitle", function_name );
+     self setClientDvar("com_errorMessage", error);
+     self OpenPopUpMenu( "error_popmenu" );
+}
 
 internal_Print(string, all_or_host)
 {
@@ -494,20 +516,7 @@ OverFlowTest(testFix = true)
         wait 0.05;
     }
 }
-doTest()
-{
-    if(!isDefined(self.testText))
-    {
-        self exitMenu();
-        self thread OverFlowTest(true);
-    }
-    else
-    {
-        
-        self notify("stop_test");
-        self.testText destroy();
-    }
-}
+
 addString(string)
 {
     if(!inArray(level.strings,string))
@@ -578,7 +587,7 @@ kill_popUp( amount, bonus, hudColor, glowAlpha )
     self.hud_scorePopup.x     = 0;
     self.hud_scorePopup.y     = 10;
     self.hud_scorePopup.alpha = 0.85;
-    //self.hud_scorePopup thread maps\mp\gametypes\_hud::fontPulse( self );
+    //self.hud_scorePopup thread maps\mp\gametypes\_hud::fontPulse( self );drop_icon
 
     increment = max( int( self.bonusUpdateTotal / 20 ), 1 );
         

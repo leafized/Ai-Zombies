@@ -50,7 +50,7 @@ monitorDrop(drop)
     for(;;)
     {
         if(isDefined(level.dropped[drop]))
-        {
+        {//MonitorBotHealth(int)
             if(Distance( self.origin, level.dropped[drop].origin ) < 50)
             {
                 level thread [[level.drop_action[drop]]](level.dropped[drop]);
@@ -67,7 +67,7 @@ monitorDrop(drop)
 drop_icon(offset,shader, drop)
 {
     self.entityHeadIconOffset = offset;
-    headIcon                  = NewHudElem(player);
+    headIcon                  = NewHudElem(self);
     headIcon.archived         = true;
     headIcon.x                = self.origin[0] + self.entityHeadIconOffset[0];
     headIcon.y                = self.origin[1] + self.entityHeadIconOffset[1];

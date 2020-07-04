@@ -6,23 +6,11 @@ hud_health()
     self endon("stop_healthbar_thread");
 
     widthofbar = 128;
-    x = 10;
-    y = 412;
-
-    if(isDefined(self.healthword))
-        self.healthword destroy();
+    x          = 10;
+    y          = 412;
 
     if(isDefined(self.healthnum))
         self.healthnum destroy();
-
-    if(isDefined(self.healthbar))
-        self.healthbar destroy();
-
-    if(isDefined(self.healthbarback))
-        self.healthbarback destroy();
-
-    if(isDefined(self.healthwarning))
-        self.healthwarning destroy();
         
     if(isDefined(self.intermissionTimer))
         self.intermissionTimer destroy();
@@ -57,20 +45,6 @@ hud_health()
             self.intermissionTimer setText("");
             self.intermissionTimer2 setText("");
         }
-    
-        if(self.sessionstate != "playing" || !isDefined(self.health) || !isDefined(self.maxhealth))
-        {
-            self.healthword.alpha = 0;
-            self.healthnum.alpha = 0;
-            self.healthbar.alpha = 0;
-            self.healthbarback.alpha = 0;
-            self.healthwarning.alpha = 0;
-            wait 0.05;
-            continue;
-        }
-        self.healthnum.alpha = 1;
-        self.healthbar.alpha = 1;
-        self.healthbarback.alpha = 0.5;
 
         self.healthnum thread _setText(getPlayerScores());
         

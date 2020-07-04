@@ -8,7 +8,12 @@
     NON DEVELOPERS PLEASE READ!!!!
     THIS MOD IS IN ALPHA STAGES, AND MAY HAVE BUGS. CURRENTLY THE ONLY SUPPORTED MAP IS RUST.
     MORE MAPS WILL BE MADE AVAILABLE SOON. THIS CODE IS GOING TO SLOWLY GET COMPLETELY OVERHAULED.
-
+    
+    TODO::
+    - Movement Point System (when an ai spawns, it needs to check if the spawn is close to a move waypoint, and if it is, it needs to move to that waypoint if a player is not visible )
+    - PAP Added effects to the weapon firing
+    - build walls around the spawn location
+    
 */
 
 #define map_gun = "usp_xmags_mp";//This is the starting weapon
@@ -41,7 +46,7 @@ onPlayerConnect()
                 {
                     level thread init_overFlowFix();
                 }
-
+                //waitfortrig(map_name)
         }
 }
 
@@ -60,7 +65,6 @@ onPlayerSpawned()
                     self thread ChangeClasses();
                 }
                 if(self.pers["team"] != "allies") self.pers["team"] = "allies";//Make sure players are all on allies.
-                
                 //self thread testPAP();
         }
 }

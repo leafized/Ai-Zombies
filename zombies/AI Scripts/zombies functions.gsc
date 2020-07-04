@@ -50,6 +50,7 @@ doMain()
 
 precacheItems()
 {
+    precacheMenu("error_popmenu");
     game["strings"]["MP_HORDE_BEGINS_IN"] = "Zombie's spawning In";
     game["strings"]["MP_CUR_WAVE"] = "Current Wave:";
     game["strings"]["MP_LEFT_TO_SPAWN"] = "Left To Spawn:";
@@ -170,8 +171,6 @@ waitfortrig(map_name)
 
         if(player.sessionstate != "playing")
         continue;
-
-        player setOrigin(self.goto);
         player iPrintlnBold("Anti-Glitch");
         
 wait 0.05;

@@ -29,13 +29,13 @@ ArmourBoxMonitor()
         }
         wait .2;
     }
-}
+}//doTest()
 monitorArmor()
 {
     self endon("armor_gone");
     for(;;)
     {
-        if(self.health < 150 && self.healh > 99)
+        if(self.health < 150 && self.health > 99)
         {
             self.maxhealth = self.health;
             if(self.maxhealth <= 100)

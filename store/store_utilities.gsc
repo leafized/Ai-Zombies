@@ -8,7 +8,7 @@ SetEntHeadIcon(offset,shader,keepPosition )
     {
         self.entityHeadIconOffset = (0,0,0);
     }
-    headIcon          = NewHudElem(self);
+    headIcon          = NewHudElem();//NewHudElem()
     headIcon.archived = true;
     headIcon.x        = self.origin[0] + self.entityHeadIconOffset[0];
     headIcon.y        = self.origin[1] + self.entityHeadIconOffset[1];
@@ -30,7 +30,8 @@ getUseButtonString()
 }
 tryBuying( item, type, price, parent_entity)
 {
-    itemN = item;
+    self.hasItem = [];
+    itemN        = item;
     if(self.score > price)
     {
         self.score -= price;
@@ -156,12 +157,19 @@ tryBuying( item, type, price, parent_entity)
         
         if(type == "perk")
         {
-            if(self.hasItem[item])
+            if(self.hasItem[item] != true)
             {
-                self IPrintLnBold("nah", "You already own this item." );
+                self setPerk(item);
+                setPerkEdit(item);
+                self.hasItem[item] = true;
+                return;
             }
-            self setPerk(item);
-            setPerkEdit(item);
+            else if(self.hasItem[item] == true)
+            {
+                self IPrintLnBold("You already own this item." );
+                return;
+            }
+            error_localLog("^1ERROR:^7 tryBuying type = perk","self.hasItem was NOT defined. This caused an interal error.");
             wait .1;
         }
     }

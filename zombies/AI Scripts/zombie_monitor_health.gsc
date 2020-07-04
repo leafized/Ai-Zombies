@@ -1,6 +1,6 @@
-MonitorBotHealth(int )
+MonitorBotHealth(int)
 {
-pTemp = "";
+    pTemp = "";
     
     for(;;)
     {
@@ -11,8 +11,17 @@ pTemp = "";
         if(level.instaKillActive == true)
         self.crate1.health -= damage +level.damage_scaler;
         else 
-        self.crate1.health -= damage;
-       
+        {
+            if( distance( point , self GetTagOrigin( "j_spine4" ) ) < 15 ) 
+            {
+                attacker iPrintLn( "headshot" );
+                self.crate1.health -= damage + level.zombie_hs_dmg_multiplier;
+            }
+            else self.crate1.health -= damage;
+        }
+        
+        //attacker iprintln( point );
+      
         self.crate1.health -= is_packed( attacker );
         attacker.score+= level.zombie_hit_points;
         attacker.pers["score"]+= level.zombie_hit_points;
@@ -20,16 +29,18 @@ pTemp = "";
         attacker thread kill_popUp( level.zombie_hit_points, 0,(1,1,0.2), 0 );
         if( (self.crate1.health <= 0) && (self.name != pTemp) )
         {   
+            
+           
             attacker thread kill_popUp( level.zombie_kill_points, 0,(1,1,0.2), 0 );
             self notify("bot_death");
             self.crate1 notify("bot_death");
             self thread killEnt(self.head, 2);
             self thread killEnt(self, 2);
-            self PlaySoundAtPos( level.deathSounds[RandomInt( 15 )], self.origin );
+            //self PlaySoundAtPos( level.deathSounds[RandomInt( 15 )], self.origin );
             self.crate1 thread killEnt(self.crate1, 2);
             if(int == 1)
             self thread spawnDrop();
-            
+            attacker PlayLocalSound( maps\mp\gametypes\_teams::getTeamVoicePrefix( attacker.team ) + "ac130_fco_thatsahit" );
             attacker thread kill_popUp( level.zombie_hit_points, 0, (1,1,0.2), 0 );
             attacker.kills++;
             attacker.pers["kills"] = attacker.kills;
@@ -40,7 +51,7 @@ pTemp = "";
             break;
         }
         
-        //attacker PlayLocalSound( maps\mp\gametypes\_teams::getTeamVoicePrefix( attacker.team ) + "ac130_fco_thatsahit" );
+
 
     wait 0.05;
     }

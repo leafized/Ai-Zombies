@@ -53,15 +53,16 @@ init_zm_developer_settings()
 
     /* Tweakable */
     level.ZombieHealth = 100;//can change //Zombes / AI Scripts / zombie_monitor_health.gsc
-    level.destructibleSpawnedEntsLimit += 50;
+    level.destructibleSpawnedEntsLimit += 30;
     level.zombie_kill_points       = 70;//Base points a player recieves when killing zombies
     level.zombie_hit_points        = 10;//Base hit points when a player damages a zombie.
-    level.zombies_max_spawn        = 20;//Maximum zombies that can be spawned at onen time.
+    level.zombies_max_spawn        = 15;//Maximum zombies that can be spawned at onen time.
     level.zombie_speed_multiplier  = 1;//Zombie Speed Multiplier, change to make zombies move faster.
     level.run_animation            = @"pb_run_fast";
     level.walk_animation           = "pb_walk_forward_mg";//Animation used for movement, will be updated when different zombies are introducted.
     level.zombie_base_dmg_modifier = 30;
     level.round_dmg_modifier       = 0;//this should always remain 0 unless packapunch is active on your weapon.
+    level.zombie_hs_dmg_multiplier = 20;//This is the amount of damage that will be dealt in addition to the weapons damage for headshots
     PrecacheMpAnim( level.run_animation  );//zombies anim
     PrecacheMPAnim( level.walk_animation );//Zombie Walking Animation
     
