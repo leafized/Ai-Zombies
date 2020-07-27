@@ -2,11 +2,31 @@
 THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
 http://youtube.com/leafized
 
-# NEW MAP :: TERMINAL #
 
-Supported Maps: Underpass, Rust, Terminal
+``Supported Maps: Underpass, Rust, Terminal``
+`https://github.com/leafized/Ai-Zombies/releases/ for the latest release download!` 
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
+
+
+0.2.0b LIVE CHANGE- IMPORTANT
+[store]
+- Adjusted pricing slightly for pack-a-punch
+- Adjusted huds for eye-candy.
+
+[zombies]
+- Fixed a bug causing the game to crash in early rounds.
+(this bug made the game unplayable for the time being.
+
+[Maps]
+- Underpass temporarily does not have a perk. This will be added in the next update
+
+# KNOWN BUGS :: CURRENTLY IN GAME #
+- Zombies may stack, i will be working around this.
+- Console should be fixed, but if you notice something, tell me.
+- When you die, your player may respawn and get attacked until the nuke drops.
+- When there is multiple players, player will respawn at the end of each intermission. Not really game breaking, but worth mentioning.
+
 
 0.14.0b LIVE CHANGE
 [STORE]
