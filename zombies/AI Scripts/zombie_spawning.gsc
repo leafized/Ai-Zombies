@@ -53,7 +53,7 @@ CreateBotWave( )
             level.zombies[i] thread ClampToGround();
             level.zombies[i] thread GetBestPlayerAndMoveTo();//VectorToAngles( <vector> )
             level.zombies[i] thread nuke_waittill(i);
-            wait 0.6;
+            wait .8;
         }
     }
     level thread MonitorFinish();

@@ -1,10 +1,16 @@
 loadMap(type)
 {
-    level.map_list     = ["mp_rust", "mp_underpass", "mp_terminal"];
-    level.map_function = [::map_mp_rust, ::map_mp_underpass, ::map_mp_terminal];
+    level.map_list     = ["mp_rust", "mp_underpass", "mp_terminal", "mp_highrise"];
+    level.map_function = [::map_mp_rust, ::map_mp_underpass, ::map_mp_terminal, ::map_mp_highrise];
     currentMap         = getDvar("mapname");
     
-    
+    DeathBarriers = GetEntArray("trigger_hurt", "classname");
+    foreach(Barrier in DeathBarriers)
+    {
+        Barrier.savedOrigin = Barrier.origin;
+        Barrier.origin      = (0,0,9999999);
+    }
+        
     for(i=0;i<level.map_list.size;i++)
     {
         if(level.map_list[i]==currentMap)

@@ -10,9 +10,14 @@ GetBestPlayerAndMoveTo( )
         {   
             if(!isAlive(player))
             continue;
+            
             if(level.teamBased && self.team == player.pers[@"team"])
                 continue;
   
+            if( !bulletTracePassed( self getTagOrigin( "j_head" ), player getTagOrigin( "j_head" ), false, self ) )
+                continue;
+            if(player.sessionstate != "playing")
+                continue;
             if((!isdefined(TmpDist)) || distance(self.origin, player.origin) < TmpDist)
             {
                 TmpDist = distance(self.origin, player.origin);
