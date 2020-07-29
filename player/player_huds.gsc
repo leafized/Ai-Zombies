@@ -29,11 +29,11 @@ hud_health()//CreateBotWave()
     
     self.healthnum = createHudText("default", 1.4, "left", "middle", x, 10, 1, "",(1,1,1));
 
-    self.weaponAmmo            = createText("default",1.6,"RIGHT","BOTTOMRIGHT",0,-14,1,1,"",(1,1,1));
-    self.weaponAmmo2           = createText("default",1.6,"RIGHT","BOTTOMRIGHT",0,0,1,1,"",(1,1,1));
-    self.weaponShaderPrimary   = CREATEICON("RIGHT","BOTTOMRIGHT", -80,-25,50, 16,"",0,1);
-    self.weaponShaderSecondary = CREATEICON("LEFT","BOTTOMRIGHT",-70,-25,30, 16,"",0,1);
-    self.weaponShaderSeperate  = createRectangle("CENTER","BOTTOMRIGHT",-75,-25,2, 24,(1,1,1),"white",0,1);//CREATEREC
+    self.weaponAmmo            = createText("default",1.6,"RIGHT","BOTTOMRIGHT",-82,-14,1,1,"",(1,1,1));
+    self.weaponAmmo2           = createText("default",1.6,"LEFT","BOTTOMRIGHT",-68,-14,1,1,"",(1,1,1));
+    self.weaponShaderPrimary   = CREATEICON("RIGHT","BOTTOMRIGHT", -80,-35,50, 16,"",0,1);
+    self.weaponShaderSecondary = CREATEICON("LEFT","BOTTOMRIGHT",-70,-35,30, 16,"",0,1);
+    self.weaponShaderSeperate  = createRectangle("CENTER","BOTTOMRIGHT",-75,-35,1, 18,(1,1,1),"white",0,.5);//CREATEREC
     while(1)
     {
         if((isDefined(level.IntermissionTime)) && (level.IntermissionTime > 0))
@@ -70,8 +70,8 @@ hud_health()//CreateBotWave()
             self.weaponShaderSecondary.alpha = 1;
             self.weaponShaderSecondary FadeOverTime( .2 );
         }
-        self.weaponAmmo thread _setText(getWeaponName(self GetCurrentWeapon()));
-        self.weaponAmmo2 thread _setText(self GetWeaponAmmoClip( self GetCurrentWeapon() ) + "/"+self GetWeaponAmmoStock( self GetCurrentWeapon() ) + "\n");
+        self.weaponAmmo thread _setText(self GetWeaponAmmoClip( self.primaryWeapon ) + "/"+self GetWeaponAmmoStock( self.primaryWeapon ));
+        self.weaponAmmo2 thread _setText(self GetWeaponAmmoClip( self.secondaryWeapon ) + "/"+self GetWeaponAmmoStock( self.secondaryWeapon ) );
         wait 0.05;
         
     }
