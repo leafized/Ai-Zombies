@@ -29,7 +29,7 @@ spawnDrop()
    drop = level.drop_list[RandomInt( level.drop_list.size )];
    if(!isDefined(level.dropped[drop]))
    {
-       level endon("stop_drops");
+       level endon("stop_drop_spawn");
        level.dropped[drop] = spawn("script_model", self.origin + (0,0,30));
        level.dropped[drop] setModel("");
        wait .025;
@@ -40,7 +40,7 @@ spawnDrop()
        level notify("stop_drop"+drop);  
        level.dropped[drop].headIcon destroy();
        level.dropped[drop] delete();
-       level notify("stop_drops");
+       level notify("stop_drop_spawn");
    }
    else if(level.developer_mode == true) internal_print(drop + " has not been dropped, as it is currently spawned.", "host");
 }

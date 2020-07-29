@@ -62,11 +62,25 @@ tryBuying( item, type, price, parent_entity)
                     list = self getWeaponsListPrimaries();
                     if(list.size>1)
                     {
-                        self takeWeapon(self getCurrentWeapon());
+                        if(self GetCurrentWeapon() == self.primaryWeapon ){
+                            self takeWeapon(self getCurrentWeapon());
+                            self.primaryWeapon = undefined;
+                            //self SwitchToWeapon( self.secondaryWeapon );
+                        }
+                        if(self GetCurrentWeapon() == self.secondaryWeapon ){
+                            self TakeWeapon( self GetCurrentWeapon() );
+                            self.secondaryWeapon = undefined;
+                            //self SwitchToWeapon( self.secondaryWeapon );
+                        }
                     }
                     
                     //Give Weapon
                     self giveWeapon(itemN);
+                    if(!(isDefined(self.secondaryWeapon))) self.secondaryWeapon = itemN;
+                    else if(!(isDefined(self.primaryWeapon))) self.primaryWeapon = itemN;
+                    
+                    self iprintln(self.primaryWeapon);
+                    self IPrintLn( self.secondaryWeapon );
                     self giveMaxAmmo(itemN);
                     self SwitchToWeapon(itemN);
                     level.stopSec = false;

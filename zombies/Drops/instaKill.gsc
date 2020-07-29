@@ -4,24 +4,24 @@ instaKill(drop)
     level.instaKillActive = true;
     level.damage_scaler   = 10000;
     Announcement( "^1INSTAKILL STARTED" );
-    time             = 30;
-    Timer            = NewHudElem();
-    Timer.align      = "BOTTOM";
-    Timer.relative   = "BOTTOM";
-    Timer.foreground = true;
-    Timer.fontScale  = 1;
-    Timer.color      = ( 1,1,1 );
-    Timer.font       = "objective";
-    Timer.alpha      = 1;
-    Timer SetTimer(time);
-    clockObject = spawn( "script_origin", (0,0,0) );
-    clockObject hide();
-    for(i=0; i<=time; i++)
+    level.instaKilltime             = 30;
+    level.instaKillTimer            = NewHudElem();
+    level.instaKillTimer.align      = "BOTTOM";
+    level.instaKillTimer.relative   = "BOTTOM";
+    level.instaKillTimer.foreground = true;
+    level.instaKillTimer.fontScale  = 1;
+    level.instaKillTimer.color      = ( 1,1,1 );
+    level.instaKillTimer.font       = "objective";
+    level.instaKillTimer.alpha      = 1;
+    level.instaKillTimer SetTimer(time);
+    level.instaKillclockObject = spawn( "script_origin", (0,0,0) );
+    level.instaKillclockObject hide();
+    for(level.instaKilltime=0; level.instaKilltime<=level.instaKilltime; level.instaKilltime++)
     {
-            clockObject playSound( "ui_mp_suitcasebomb_timer" );
+        level.instaKillclockObject playSound( "ui_mp_suitcasebomb_timer" );
             wait 1;
     }
-    Timer destroy();
+    level.instaKillTimer destroy();
     level.damage_scaler   =  defined;
     level.instaKillActive = false;
     

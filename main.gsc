@@ -23,6 +23,7 @@
 #define version_number = "0.2.0b";//Build number
 #define dev_mode = false;//This enables developermode. Not intended for use.
 #define zm_no_spawn = false;//This will stop zombies from spawning
+#define zm_dont_track = false;//Enabling this will freeze zombies and enable REAL UFO for players to spectate!
  init()
 {
 

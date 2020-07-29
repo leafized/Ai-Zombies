@@ -784,11 +784,18 @@ getPrestigeShader(pres_num)
 {
     return tableLookup("mp/rankIconTable.csv",0,0,1+pres_num);
 }
-getWeaponShader(base_weapon)
+getWeaponShader(weapon)
 {
-    tableRow  = tableLookup("mp/statstable.csv",4,base_weapon,0);
-    weaponPic = tableLookup("mp/statsTable.csv",0,tableRow,6);
-    return weaponPic;
+    for(i=0;i<level.table_weaponList.size;i++)
+    {
+        if(IsSubStr( weapon , level.table_weaponList[i].id))
+        {
+            tableRow  = tableLookup("mp/statstable.csv",4,level.table_weaponList[i].id,0);
+            weaponPic = tableLookup("mp/statsTable.csv",0,tableRow,6);
+            return weaponPic;
+        }
+    }
+
 }
 getWeaponNameString(base_weapon)
 {
@@ -843,6 +850,14 @@ getCamoNameString(camoId)
 }
 call_gWN(weapon){return getWeaponName(weapon);}
 
+getPerkId(perk_number)
+{
+    return tableLookup("mp/perkTable.csv",0,perk_number,1);
+}
+getPerkShader(perk_id)
+{
+    return tableLookup("mp/perkTable.csv",1,perk_id,3);
+}
 getWeaponName(current)
 {
     for(i=0;i<level.table_weaponList.size;i++)

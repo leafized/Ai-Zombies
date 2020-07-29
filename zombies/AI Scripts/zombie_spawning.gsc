@@ -3,9 +3,7 @@ CreateBotWave( )
     level endon("game_ended");
 
     level.Wave++;
-    //level.BotsForWave     = 1;
-    level.BotsForWave     = (10 + (3*level.Wave));
-    //level.RealSpawnedBots = 1;
+    level.BotsForWave = (10 + (3*level.Wave));
     level.ZombieHealth += (5*level.Wave);
     level.zState = "playing";
 
@@ -23,7 +21,6 @@ CreateBotWave( )
             level.zombies[i].head.angles = (270,0,270);
             level.zombies[i].head LinkTo( level.zombies[i], "j_spine4" );
             level.zombies[i].isZombie = true;
-            
             
             
             
@@ -48,10 +45,13 @@ CreateBotWave( )
             level.zombies[i].currentsurface = "default";
             level.zombies[i].kills = 0;
             
-            level.zombies[i] thread MonitorAttackPlayers();
+
             level.zombies[i] thread MonitorBotHealth();
             level.zombies[i] thread ClampToGround();
-            level.zombies[i] thread GetBestPlayerAndMoveTo();//VectorToAngles( <vector> )
+            if(zm_dont_track == false){
+                level.zombies[i] thread GetBestPlayerAndMoveTo();
+                level.zombies[i] thread MonitorAttackPlayers();
+            }
             level.zombies[i] thread nuke_waittill(i);
             wait .8;
         }

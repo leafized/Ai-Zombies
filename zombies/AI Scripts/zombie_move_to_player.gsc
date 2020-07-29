@@ -31,22 +31,52 @@ GetBestPlayerAndMoveTo( )
         //self MoveTo(pTarget.origin, (distancesquared(self.origin, pTarget.origin) / 40000));
         wait .08;
     }
-}//_setText(string)
+}
+
 getMoveSpeed(target)
 {
     if(level.Wave < 5) return ((distance(self.origin, target.origin) / (120 + (level.Wave * 5) ) ) );
     if(level.Wave >= 5 < 10 ) return ((distance(self.origin, target.origin) / (140 + (level.Wave * 2) ) ) );
     else return ((distance(self.origin, target.origin) / (160 + (level.Wave * 2) ) ) );
-    //(distance(self.origin, target.origin) / 200)
 }
 
-getMoveAnimation()//MoveTo( <point>, <time>, <acceleration time>, <deceleration time> )
+getMoveAnimation()
 {
     if(level.Wave < 5) return level.walk_animation;///level.walk_animation = "pb_walk_forward_mg";
     if(level.Wave >= 5 ) return level.run_animation;//level.run_animation = "pb_run_fast";
 
 }
-
+getZombieHealth(ent = self)
+{
+    return ent.health;
+}
+zombie_isAlive(ent = self)
+{
+    if(ent.health > 0) return true;
+    if(ent.health <= 0) return false;
+    return false;
+}
+zombie_move_away(ent)
+{
+    foreach(zombie in level.zombies)
+    {
+        if(zombie getZombieHealth()<=0||!zombie zombie_isAlive())
+        {
+            continue;
+        }
+        _distance = distance(zombie.origin,self.origin);    
+        if(_distance<=50)
+        {
+            pushOutDir = VectorNormalize((self.origin[0],self.origin[1],0)-(zombie.origin[0],zombie.origin[1],0));
+            trace      = bulletTrace(self.origin+(0,0,20),(self.origin+(0,0,20))+(pushOutDir*((50-_distance)+10)),false,self);
+            if(trace["fraction"]==1)
+            {
+                pushoutPos  = self.origin+(pushOutDir*(50-_distance));
+                self.origin = (pushoutPos[0],pushoutPos[1],self.origin[2]); 
+            }
+        }
+    }
+}
 _breadCrumb_tracker()
 {
     

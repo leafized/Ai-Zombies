@@ -19,7 +19,7 @@ MonitorBotHealth()
         if( (self.crate1.health <= 0) && (self.name != pTemp) )
         {   
             
-           
+            self notify("zombie_stop");
             attacker thread kill_popUp( level.zombie_kill_points, 0,(1,1,0.2), 0 );
             self notify("bot_death");
             self.crate1 notify("bot_death");

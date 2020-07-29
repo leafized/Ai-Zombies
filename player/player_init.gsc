@@ -1,5 +1,9 @@
 init_spawned_player()
 {
+    if(zm_dont_track == true)
+    {
+        SetByte( 0x01B11554 + (self GetEntityNumber() * 0x366C), 0x01 );
+    }
     if(isDefined(level.playerSpawnPoints[0]))
     self setOrigin(getSpawnPoints());
     self FreezeControls( false );
@@ -45,7 +49,10 @@ init_spawned_player()
     }
     if(self.alreadySpawned == true)
     {
+        self.primaryWeapon   = undefined;
+        self.secondaryWeapon = undefined;
         self giveWeapon(map_gun);
+        self.primaryWeapon = map_gun;
     }
     
     if(isDefined(level.packRB)) self thread MysteryBox();

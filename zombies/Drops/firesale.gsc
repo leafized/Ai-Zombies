@@ -1,5 +1,5 @@
 
-fireSale()
+fireSale(drop)
 {
     if(!isdefined(level.oldPrices))
     {
@@ -27,6 +27,7 @@ fireSale()
     Timer SetTimer(time);
     clockObject = spawn( "script_origin", (0,0,0) );
     clockObject hide();
+    clockObject endon("stop_drop_action");
     for(i=0; i<=time; i++)
     {
             clockObject playSound( "ui_mp_suitcasebomb_timer" );
@@ -38,4 +39,5 @@ fireSale()
     level.store_item_price_ammo   = level.oldPrice_ammo;
     level.store_item_price_perk   = level.oldPrice_perk;
     level.store_item_price_armor  = level.oldPrice_armor;
+    level.droppedAction[drop].active = false;
 }
