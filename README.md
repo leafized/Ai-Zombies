@@ -1,15 +1,32 @@
 # Ai Zombies | Click View on Github and Download as Zip! Make sure to read this!
-THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.10.1b
+THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.16.3b
 http://youtube.com/leafized
 
 
-``Supported Maps: Underpass, Rust, Terminal``
+``Supported Maps: Highrise, Underpass, Rust, Terminal``
 `https://github.com/leafized/Ai-Zombies/releases/ for the latest release download!` 
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
 
 
-0.2.0b LIVE CHANGE- IMPORTANT
+0.16.3b LIVE CHANGE - Graphical Interface
+[User interface]
+- New weapon UI
+   * Weapon ui will now display your primary and secondary weapon, with its ammo placed accordingly. 
+
+[store]
+- Adjusted pricing math for pack a punc
+
+[Drops] 
+- Internal drop overhaul is coming. Will be favoring a tactical flare instead of a waypoint 
+
+[Zombie Movement] 
+- Changes to how the zombies detect players, this helps with map compatibility 
+- Changed to movement progression. 
+
+
+
+0.15.0b LIVE CHANGE- IMPORTANT
 [store]
 - Adjusted pricing slightly for pack-a-punch
 - Adjusted huds for eye-candy.
@@ -20,7 +37,6 @@ http://youtube.com/leafized
 
 [Maps]
 - Underpass temporarily does not have a perk. This will be added in the next update
-
 # KNOWN BUGS :: CURRENTLY IN GAME #
 - Zombies may stack, i will be working around this.
 - Console should be fixed, but if you notice something, tell me.
