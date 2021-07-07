@@ -33,7 +33,7 @@ hud_health()//CreateBotWave()
     self.weaponAmmo2           = createText("default",1.6,"LEFT","BOTTOMRIGHT",-68,-14,1,1,"",(1,1,1));
     self.weaponShaderPrimary   = CREATEICON("RIGHT","BOTTOMRIGHT", -80,-35,50, 16,"",0,1);
     self.weaponShaderSecondary = CREATEICON("LEFT","BOTTOMRIGHT",-70,-35,30, 16,"",0,1);
-    self.weaponShaderSeperate  = createRectangle("CENTER","BOTTOMRIGHT",-75,-35,1, 18,(1,1,1),"white",0,.5);//CREATEREC
+    self.weaponShaderSeperate  = createRectangle("CENTER","BOTTOMRIGHT",-75,-35,60, 18,(.2,.2,.2),"white",0,.7);//CREATEREC
     while(1)
     {
         if((isDefined(level.IntermissionTime)) && (level.IntermissionTime > 0))
@@ -48,6 +48,7 @@ hud_health()//CreateBotWave()
             self.intermissionTimer setText("");
             self.intermissionTimer2 setText("");
         }
+       
 
         self.healthnum thread _setText(getPlayerScores());
         if(isDefined(self.weaponShaderPrimary)){//Here we want to check and see if the primary weapon is defined

@@ -24,9 +24,13 @@
 #define dev_mode = false;//This enables developermode. Not intended for use.
 #define zm_no_spawn = false;//This will stop zombies from spawning
 #define zm_dont_track = false;//Enabling this will freeze zombies and enable REAL UFO for players to spectate!
+
+
  init()
 {
-
+#ifdef DEVELOPER
+    dev_mode = true;
+#endif
      level loadMap();
 
      level precacheItems();
