@@ -8,6 +8,21 @@ http://youtube.com/leafized
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
 
+0.2.0b LIVE CHANGE - Graphical Interface
+[User interface]
+- New weapon UI
+   * This is a graphical overhaul, providing a cleaner ui for weapons and points! 
+- New Points UI 
+   * A new hud was designed for displaying your current money!
+   * removed the ability to see other players money, as this information simply wasn't needed.
+- Round Progression Hud
+   * A round counter will now appear to the right of your screen.  
+
+
+
+== OLD  UPDATES! ==
+
+
 
 0.16.3b LIVE CHANGE - Graphical Interface
 [User interface]
