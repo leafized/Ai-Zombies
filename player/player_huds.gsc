@@ -27,6 +27,7 @@ hud_health()//CreateBotWave()
     self.intermissionTimer2 setPoint( "TOP", "TOP", 0, 165 );
     self.intermissionTimer2.color = (1, 1, 1);
     
+    self.roundCounter        = createText("objective", 1.5,"LEFT", "BOTTOMRIGHT",0,0,1,1,level.Wave + 1,(1,1,1),(.4,.4,.4),1);
     self.weaponAmmo          = createText("objective",1.2,"LEFT","BOTTOMRIGHT",-130,-35,1,1,"",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
     self.weaponAmmoStock     = createText("objective",.9,"LEFT","BOTTOMRIGHT",-110,-35,1,1,"",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
     self.weaponShaderPrimary = CREATEICON("RIGHT","BOTTOMRIGHT", -30,-35,70, 16,"",3,1);

@@ -6,10 +6,10 @@ instaKill(drop)
     Announcement( "^1INSTAKILL STARTED" );
     level.instaKilltime             = 30;
     level.instaKillTimer            = NewHudElem();
-    level.instaKillTimer.align      = "BOTTOM";
-    level.instaKillTimer.relative   = "BOTTOM";
+    level.instaKillTimer.align      = "TOPLEFT";
+    level.instaKillTimer.relative   = "TOPLEFT";
     level.instaKillTimer.foreground = true;
-    level.instaKillTimer.fontScale  = 1;
+    level.instaKillTimer.fontScale  = 1.5;
     level.instaKillTimer.color      = ( 1,1,1 );
     level.instaKillTimer.font       = "objective";
     level.instaKillTimer.alpha      = 1;
@@ -22,7 +22,7 @@ instaKill(drop)
             wait 1;
     }
     level.instaKillTimer destroy();
-    level.damage_scaler   =  defined;
+    level.damage_scaler   = 1;
     level.instaKillActive = false;
     
     

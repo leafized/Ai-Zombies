@@ -16,24 +16,32 @@ IntermissionCountdown() // called in maps
         wait level.timer_intermission;
         foreach(p in level.players)
         {
-            p iprintln("Now entering round " + level.wave);
+            p thread doHudUpdate();
         }
     }
 }
 
+doHudUpdate()
+{
+    self.roundCounter _setText(level.wave + 1);
+    self.roundCounter getBig();
+    self.roundCounter getSmall();
+}
 IntermissionTimer( time )
 {
     
-        Timer = NewHudElem();
-        Timer.alignX = "right";
-        Timer.alignY = "top";
-        Timer.horzAlign = "right";
-        Timer.vertAlign = "top";
+        Timer            = NewHudElem();
+        Timer.alignX     = "right";
+        Timer.alignY     = "top";
+        Timer.horzAlign  = "right";
+        Timer.vertAlign  = "top";
         Timer.foreground = true;
-        Timer.fontScale = 1;
-        Timer.color = ( 175/255, 34/255, 34/255 );
-        Timer.font = "hudbig";
-        Timer.alpha = 1;
+        Timer.fontScale  = 1.5;
+        Timer.color      = ( 1,1,1 );
+        Timer.font       = "objective";
+        Timer.glowColor  = (.1,.1,.1);
+        Timer.glowAlpha  = 1;
+        Timer.alpha      = 1;
         Timer SetTimer(time);
         clockObject = spawn( "script_origin", (0,0,0) );
         clockObject hide();

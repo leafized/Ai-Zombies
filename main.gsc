@@ -28,20 +28,10 @@
 
  init()
 {
-#ifdef DEVELOPER
-    dev_mode = true;
-#endif
      level loadMap();
 
      level precacheItems();
     level thread onPlayerConnect();
-    level.onStartGameType = ::onStartGameType;
-
-    SetDvar("ui_gametype", "^6AI Zombies by Leafized!");
-    
-}
-onStartGameType()
-{
     setObjectiveText( "allies", "ELIMINATE ALL ZOMBIES!" );
     setObjectiveText( "axis", "KILL THEM ALL" );
 
@@ -50,6 +40,7 @@ onStartGameType()
 
     setObjectiveHintText( "allies", "SURVIVE AS LONG AS YOU CAN" );
     setObjectiveHintText( "axis", "SURVIVE AS LONG AS YOU CAN" );
+    SetDvar("ui_gametype", "^6AI Zombies by Leafized!");
     
 }
 onPlayerConnect()
