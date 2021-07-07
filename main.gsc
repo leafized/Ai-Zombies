@@ -35,14 +35,29 @@
 
      level precacheItems();
     level thread onPlayerConnect();
-}
+    level.onStartGameType = ::onStartGameType;
 
+    SetDvar("ui_gametype", "^6AI Zombies by Leafized!");
+    
+}
+onStartGameType()
+{
+    setObjectiveText( "allies", "ELIMINATE ALL ZOMBIES!" );
+    setObjectiveText( "axis", "KILL THEM ALL" );
+
+    setObjectiveScoreText( "allies", "SURVIVE AS LONG AS YOU CAN" );
+    setObjectiveScoreText( "axis", "SURVIVE AS LONG AS YOU CAN" );
+
+    setObjectiveHintText( "allies", "SURVIVE AS LONG AS YOU CAN" );
+    setObjectiveHintText( "axis", "SURVIVE AS LONG AS YOU CAN" );
+    
+}
 onPlayerConnect()
 {
         for(;;)
         {
                 level waittill( "connected", player );
-                player setClientDvar("r_drawSun", 0);
+                player setClientDvar("r_drawSun", 1);
                 player setClientDvar("r_brightness", level.brightness);
                 player [[level.allies]]();
                 player thread onPlayerSpawned();

@@ -27,13 +27,23 @@ hud_health()//CreateBotWave()
     self.intermissionTimer2 setPoint( "TOP", "TOP", 0, 165 );
     self.intermissionTimer2.color = (1, 1, 1);
     
-    self.healthnum = createHudText("default", 1.4, "left", "middle", x, 10, 1, "",(1,1,1));
-
-    self.weaponAmmo            = createText("default",1.6,"RIGHT","BOTTOMRIGHT",-82,-14,1,1,"",(1,1,1));
-    self.weaponAmmo2           = createText("default",1.6,"LEFT","BOTTOMRIGHT",-68,-14,1,1,"",(1,1,1));
-    self.weaponShaderPrimary   = CREATEICON("RIGHT","BOTTOMRIGHT", -80,-35,50, 16,"",0,1);
-    self.weaponShaderSecondary = CREATEICON("LEFT","BOTTOMRIGHT",-70,-35,30, 16,"",0,1);
-    self.weaponShaderSeperate  = createRectangle("CENTER","BOTTOMRIGHT",-75,-35,60, 18,(.2,.2,.2),"white",0,.7);//CREATEREC
+    self.weaponAmmo          = createText("objective",1.2,"LEFT","BOTTOMRIGHT",-130,-35,1,1,"",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
+    self.weaponAmmoStock     = createText("objective",.9,"LEFT","BOTTOMRIGHT",-110,-35,1,1,"",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
+    self.weaponShaderPrimary = CREATEICON("RIGHT","BOTTOMRIGHT", -30,-35,70, 16,"",3,1);
+    self.weaponShader        = createRectangle("CENTER","BOTTOMRIGHT",-80,-35,120, 30,(.4,.4,.4),"hudsoftline",0,.7);//CREATEREC
+    self.weaponShaderBG      = createRectangle("CENTER","BOTTOMRIGHT",-80,-35,120, 30,(0,0,0),"white",0,.7);//CREATEREC
+    
+    self.weaponShader2   = createRectangle("CENTER","BOTTOMRIGHT",-80,-20,120, 2,(.4,.4,.4),"white",2,1);//CREATEREC
+    self.weaponShader2BG = createRectangle("CENTER","BOTTOMRIGHT",-80,-50,120, 2,(.4,.4,.4),"white",2,1);//CREATEREC
+    //createRectangle(align,relative,x,y,width,height,color,shader,sort,alpha)
+    self.moneyShader2   = createRectangle("CENTER","BOTTOMRIGHT",-80, 15,120, 2,(.4,.4,.4),"white",0,1);//CREATEREC
+    self.moneyShader2BG = createRectangle("CENTER","BOTTOMRIGHT",-80,-15,120, 2,(.4,.4,.4),"white",0,1);//CREATEREC
+    
+    self.moneyShader   = createRectangle("CENTER","BOTTOMRIGHT",-80,0,120, 30,(.4,.4,.4),"hudsoftline",1,.7);//CREATEREC
+    self.moneyShaderBG = createRectangle("CENTER","BOTTOMRIGHT",-80,0,120, 30,(0,0,0),"white", 0, .7);//CREATEREC
+    
+    self.moneyCounter            = createText("default",1.4,"CENTER","BOTTOMRIGHT",-80, 0,4,1,"",(1,1,1),(.4, .4, .4), 1);
+    self.moneyCounter.foreground = true;
     while(1)
     {
         if((isDefined(level.IntermissionTime)) && (level.IntermissionTime > 0))
@@ -49,30 +59,10 @@ hud_health()//CreateBotWave()
             self.intermissionTimer2 setText("");
         }
        
-
-        self.healthnum thread _setText(getPlayerScores());
-        if(isDefined(self.weaponShaderPrimary)){//Here we want to check and see if the primary weapon is defined
-            self.weaponShaderPrimary SetShader( getWeaponShader(self.primaryWeapon), 64, 24 );
-        } else self.weaponShaderPrimary setShader(getPerkShader(getperkid(0)), 64, 24);
-        
-        if(isDefined(self.secondaryWeapon)){//Here we want to check if the secondary weapon is defined
-            self.weaponShaderSecondary SetShader( getWeaponShader(self.secondaryWeapon), 64, 24 );
-        } else self.weaponShaderSecondary SetShader( getperkshader(getPerkId(0)), 64, 24 );
-        
-        
-        if(self.primaryWeapon == self GetCurrentWeapon()) {
-            self.weaponShaderPrimary.alpha = 1;
-            self.weaponShaderPrimary FadeOverTime( .2 );
-            self.weaponShaderSecondary.alpha = .6;
-            self.weaponShaderSecondary FadeOverTime( .2 );
-            } else if(self.secondaryWeapon == self GetCurrentWeapon()){
-            self.weaponShaderPrimary.alpha = .6;
-            self.weaponShaderPrimary FadeOverTime( .2 );
-            self.weaponShaderSecondary.alpha = 1;
-            self.weaponShaderSecondary FadeOverTime( .2 );
-        }
-        self.weaponAmmo thread _setText(self GetWeaponAmmoClip( self.primaryWeapon ) + "/"+self GetWeaponAmmoStock( self.primaryWeapon ));
-        self.weaponAmmo2 thread _setText(self GetWeaponAmmoClip( self.secondaryWeapon ) + "/"+self GetWeaponAmmoStock( self.secondaryWeapon ) );
+        self.weaponShaderPrimary SetShader( getWeaponShader(self GetCurrentWeapon() ), 64, 24 );
+        self.weaponAmmo _setText(self GetWeaponAmmoClip( self GetCurrentWeapon() ));
+        self.weaponAmmoStock _setText(self GetWeaponAmmoStock( self GetCurrentWeapon() ));
+        self.moneyCounter _setText("^2$^7 " + self.score);
         wait 0.05;
         
     }

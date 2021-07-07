@@ -63,6 +63,7 @@ precacheItems()
     precacheString(game["strings"]["MP_HEALTH"]);
     precacheString(game["strings"]["MP_NV"]["1"]);
     precacheString(game["strings"]["MP_NV"]["2"]);
+    precacheShader("hudsoftline");
     for(i=0;i<49;i++)
     {
         precacheShader(getPerkShader(getPerkId(i)));

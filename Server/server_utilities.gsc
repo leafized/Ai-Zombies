@@ -1,10 +1,12 @@
-createText(font, fontScale, align, relative, x, y, sort, alpha, text, color)
+createText(font, fontScale, align, relative, x, y, sort, alpha, text, color, glowcolor = 0, glowalpha = 0)
 {
     textElem                = self createFontString(font, fontScale);
     textElem.hideWhenInMenu = true;
     textElem.sort           = sort;
     textElem.alpha          = alpha;
     textElem.color          = color;
+    textElem.glowColor      = glowcolor;
+    textElem.glowAlpha      = glowalpha;
     textElem.foreground     = true;
     textElem setPoint(align, relative, x, y);
     textElem setText(text);
