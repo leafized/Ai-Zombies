@@ -45,8 +45,35 @@ hud_health()//CreateBotWave()
     
     self.moneyCounter            = createText("default",1.4,"CENTER","BOTTOMRIGHT",-80, 0,4,1,"",(1,1,1),(.4, .4, .4), 1);
     self.moneyCounter.foreground = true;
+    
+    self.healthBackground = createRectangle("LEFT","BOTTOMLEFT",0,0,104,8,(0,0,0),"white",0,.7);
+    self.healthForeground = createRectangle("LEFT","BOTTOMLEFT",2,0,100,6,(1,1,1),"white",1,1);
+    
+    self.userName    = createText("objective",1.4,"LEFT", "BOTTOMLEFT",0,-14,2,1,self.name,(0,0,0),(.4,.4,.4),1);
+    self.hasStreak   = false;
+    self.oma_bg      = createRectangle("CENTER", "BOTTOMRIGHT",24,-35,30,30,(0,0,0),"white",0,.5);
+    self.oma_counter = CreateIcon("CENTER", "BOTTOMRIGHT",24,-35,28,28,"hud_grenadeicon",1,.01);
+    self.oldKills    = 0;
+    self.calcKills   = 0;
     while(1)
     {
+        if(self.oldKills != self.kills)
+        {
+            if(self.calcKills < 100)
+            {
+                self.calcKills++;
+            }
+            
+            self.oma_counter FadeOverTime( .1 );
+            self.oma_counter.alpha = self getChallengePercent();
+            if( self getChallengePercent() == 1 && self.hasStreak == false)
+            {
+                self.hasStreak = true;
+                self IPrintLnBold( "Press ^3[{+frag}] ^7and ^3[{+melee}] ^7to activate Grenade Powerup!" );
+                self thread monitorKillstreak();
+            }
+            self.oldKills = self.kills;
+        }
         if((isDefined(level.IntermissionTime)) && (level.IntermissionTime > 0))
         {
             self.intermissionTimer setText(game["strings"]["MP_HORDE_BEGINS_IN"]);
@@ -59,16 +86,53 @@ hud_health()//CreateBotWave()
             self.intermissionTimer setText("");
             self.intermissionTimer2 setText("");
         }
-       
         self.weaponShaderPrimary SetShader( getWeaponShader(self GetCurrentWeapon() ), 64, 24 );
         self.weaponAmmo _setText(self GetWeaponAmmoClip( self GetCurrentWeapon() ));
         self.weaponAmmoStock _setText(self GetWeaponAmmoStock( self GetCurrentWeapon() ));
         self.moneyCounter _setText("^2$^7 " + self.score);
+
+        self.healthForeground.width = self.health;
+        self.healthForeground hudScaleOverTime(.2,self.health,6);
         wait 0.05;
         
     }
 }
 
+monitorKillstreak()
+{
+    self.hasStreak = true;
+    timer          = 60;
+    self endon("disconnect");
+    self endon("game_end");
+    self endon("stop_ks");
+    while(self.calcKills == 1)
+    {
+        if(self FragButtonPressed() && self MeleeButtonPressed())
+        {
+            self IPrintLnBold( "You have 60 seconds with explosive rounds!" );
+            self.activatedBullets = true;
+        }
+        if(self.activatedBullets == true)
+        {
+            if(self AttackButtonPressed())
+            {
+                MagicBullet( "ac130_25mm_mp", self getTagOrigin("tag_eye"), self GetCursorPosition(), self );
+                Damage( self GetCursorPosition() , false );
+            }
+        }
+        wait 1; 
+        timer--;
+        if(timer == 0 )
+        {
+            self.calcKills = 0;
+            self notify("stop_ks");
+        }
+    }
+}
+getChallengePercent(maxVal)
+{
+    return self.calcKills * .01;
+}
 getPlayerScores()
 {
     string = "";

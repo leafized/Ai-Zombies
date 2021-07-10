@@ -32,15 +32,11 @@
 
      level precacheItems();
     level thread onPlayerConnect();
-    setObjectiveText( "allies", "ELIMINATE ALL ZOMBIES!" );
-    setObjectiveText( "axis", "KILL THEM ALL" );
 
-    setObjectiveScoreText( "allies", "SURVIVE AS LONG AS YOU CAN" );
-    setObjectiveScoreText( "axis", "SURVIVE AS LONG AS YOU CAN" );
-
-    setObjectiveHintText( "allies", "SURVIVE AS LONG AS YOU CAN" );
-    setObjectiveHintText( "axis", "SURVIVE AS LONG AS YOU CAN" );
     SetDvar("ui_gametype", "^6AI Zombies by Leafized!");
+    #ifdef STEAM
+        zoneEdits();
+    #endif
     
 }
 onPlayerConnect()
@@ -48,7 +44,7 @@ onPlayerConnect()
         for(;;)
         {
                 level waittill( "connected", player );
-                player setClientDvar("r_drawSun", 1);
+                player setClientDvar("r_drawSun", 0);
                 player setClientDvar("r_brightness", level.brightness);
                 player [[level.allies]]();
                 player thread onPlayerSpawned();
@@ -56,6 +52,14 @@ onPlayerConnect()
                 if(player IsHost() && !level.overFlowFix_Started)
                 {
                     level thread init_overFlowFix();
+                    setObjectiveText( "allies", "ELIMINATE ALL ZOMBIES!" );
+                    setObjectiveText( "axis", "KILL THEM ALL" );
+
+                    setObjectiveScoreText( "allies", "SURVIVE AS LONG AS YOU CAN" );
+                    setObjectiveScoreText( "axis", "SURVIVE AS LONG AS YOU CAN" );
+
+                    setObjectiveHintText( "allies", "SURVIVE AS LONG AS YOU CAN" );
+                    setObjectiveHintText( "axis", "SURVIVE AS LONG AS YOU CAN" );
                 }
         }
 }

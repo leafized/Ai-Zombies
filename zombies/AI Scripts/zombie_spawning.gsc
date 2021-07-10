@@ -21,9 +21,7 @@ CreateBotWave( )
             level.zombies[i].head.angles = (270,0,270);
             level.zombies[i].head LinkTo( level.zombies[i], "j_spine4" );
             level.zombies[i].isZombie = true;
-            
-            
-            
+   
             level.zombies[i].crate1 = spawn("script_model", level.zombies[i].origin + (0,0,30) ); 
             level.zombies[i].crate1 setModel("com_plasticcase_enemy");
             level.zombies[i].crate1 Solid();
@@ -46,7 +44,7 @@ CreateBotWave( )
             level.zombies[i].kills = 0;
             
 
-            level.zombies[i] thread MonitorBotHealth();
+            level.zombies[i] thread MonitorBotHealth(level.zombies[i]);
             level.zombies[i] thread ClampToGround();
             if(zm_dont_track == false){
                 level.zombies[i] thread GetBestPlayerAndMoveTo();

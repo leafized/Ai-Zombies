@@ -24,12 +24,12 @@ init_zm_developer_settings()
     level.IntermissionTime      = 20;//Genera
     level.timer_intermission    = 15;//Amount of time between rounds
     //Brightness --------------
-    level.brightness = -.35;
+    level.brightness = 0;
     ///Prices  ----------------
-    level.store_item_price_weapon = 1000;
-    level.store_item_price_ammo   = 750;
-    level.store_item_price_armor  = 2500;
-    level.store_item_price_pap    = 3500;
+    level.store_item_price_weapon = 2000;
+    level.store_item_price_ammo   = 1500;
+    level.store_item_price_armor  = 4000;
+    level.store_item_price_pap    = 7500;
     //Perk Prices
     level.store_item_price_perk["Reload"] = 2000;
     //Player Variables --------------

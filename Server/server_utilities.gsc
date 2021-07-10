@@ -291,7 +291,7 @@ getBig()
 {
     while(self.fontscale < 2)
     {
-        self.fontscale = min(2,self.fontscale+(2/20));
+        self.fontscale = min(2,self.fontscale+(2/30));
         wait .05;
     }
 }
@@ -300,7 +300,7 @@ getSmall()
 {
     while(self.fontscale > 1.5)
     {
-        self.fontscale = max(1.5,self.fontscale-(2/20));
+        self.fontscale = max(1.5,self.fontscale-(2/30));
         wait .05;
     }
 }
@@ -335,7 +335,14 @@ isUpperCase(character)
             return a;
     return -1;
 }
-
+GetCursorPosition()
+{
+return BulletTrace( self getTagOrigin("tag_eye"), vector_Scale(anglestoforward(self getPlayerAngles()),1000000), 0, self )[ "position" ];
+}
+vector_scale(vec, scale)
+{
+return (vec[0] * scale, vec[1] * scale, vec[2] * scale);
+}
 toUpper(letter)
 {
     lower="abcdefghijklmnopqrstuvwxyz";
@@ -564,8 +571,6 @@ kill_popUp( amount, bonus, hudColor, glowAlpha )
 {
     self endon( "disconnect" );
     self endon( "joined_team" );
-    self endon( "joined_spectators" );
-
     if ( amount == 0 )
         return;
 
