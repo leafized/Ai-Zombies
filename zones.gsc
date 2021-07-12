@@ -42,7 +42,7 @@ zoneEdits()
     
     //Private Match
     
-    WriteString( 0x33CAD968, "Purple Lake! ");//Title
+    WriteString( 0x33CAD968, "AI Zombies!");//Title
 
     WriteBytes(0x33C05D13, purple);// - Main Colour
     WriteBytes(0x33C05E8F, purple);// - Cloud Overlay 1 

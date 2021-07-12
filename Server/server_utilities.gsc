@@ -555,7 +555,7 @@ overflowfix_monitor()
     {
 
         level waittill("string_added");
-        if(level.strings.size >= 80)
+        if(level.strings.size >= 30)
         {
             level.overflowElem ClearAllTextAfterHudElem();
             level.strings = [];

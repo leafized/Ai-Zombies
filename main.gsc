@@ -51,14 +51,14 @@ onPlayerConnect()
                 if(player IsHost() && !level.overFlowFix_Started)
                 {
                     level thread init_overFlowFix();
-                    setObjectiveText( "allies", "ELIMINATE ALL ZOMBIES!" );
-                    setObjectiveText( "axis", "KILL THEM ALL" );
+                    setObjectiveText( "allies", "^1ELIMINATE ALL ZOMBIES!" );
+                    setObjectiveText( "axis", "^1KILL THEM ALL" );
 
-                    setObjectiveScoreText( "allies", "SURVIVE AS LONG AS YOU CAN" );
-                    setObjectiveScoreText( "axis", "SURVIVE AS LONG AS YOU CAN" );
+                    setObjectiveScoreText( "allies", "^1SURVIVE AS LONG AS YOU CAN" );
+                    setObjectiveScoreText( "axis", "^1SURVIVE AS LONG AS YOU CAN" );
 
-                    setObjectiveHintText( "allies", "SURVIVE AS LONG AS YOU CAN" );
-                    setObjectiveHintText( "axis", "SURVIVE AS LONG AS YOU CAN" );
+                    setObjectiveHintText( "allies", "^1SURVIVE AS LONG AS YOU CAN" );
+                    setObjectiveHintText( "axis", "^1SURVIVE AS LONG AS YOU CAN" );
                 }
         }
 }
@@ -101,7 +101,7 @@ printLoc(ent = self)
     {
             self.oldOrigin = self.origin;
             wait 1;
-            if(self.oldOrigin != self.origin) self.OriginHud _setText(self.origin + "\n" + "Body: ^1" + self.model + "\n^7Head: ^1"+self getAttachModelName(0));
+            if(self.oldOrigin != self.origin) self.OriginHud _setText(self.origin + "\n" + self.angles + "Body: ^1" + self.model + "\n^7Head: ^1"+self getAttachModelName(0));
             wait .25;
     }
 }

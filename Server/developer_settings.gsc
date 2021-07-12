@@ -20,9 +20,9 @@ init_zm_developer_settings()
     //Ammo Drop ---------------
     level.AmmoDrop = undefined;
     //Intermission Timer ------
-    level.IntermissionTimeStart = 15;//can change (is the beginning timer)
-    level.IntermissionTime      = 15;//Genera
-    level.timer_intermission    = 15;//Amount of time between rounds
+    level.IntermissionTimeStart = 30;//can change (is the beginning timer)
+    level.IntermissionTime      = 30;//Genera
+    level.timer_intermission    = 20;//Amount of time between rounds
     //Brightness --------------
     level.brightness = 0;
     ///Prices  ----------------
@@ -52,11 +52,11 @@ init_zm_developer_settings()
     
 
     /* Tweakable */
-    level.ZombieHealth = 70;//can change //Zombes / AI Scripts / zombie_monitor_health.gsc
+    level.ZombieHealth = 100;//can change //Zombes / AI Scripts / zombie_monitor_health.gsc
     level.destructibleSpawnedEntsLimit += 10;
-    level.zombie_kill_points       = 100;//Base points a player recieves when killing zombies
-    level.zombie_hit_points        = 15;//Base hit points when a player damages a zombie.
-    level.zombies_max_spawn        = 45;//Maximum zombies that can be spawned at onen time.
+    level.zombie_kill_points       = 120;//Base points a player recieves when killing zombies
+    level.zombie_hit_points        = 10;//Base hit points when a player damages a zombie.
+    level.zombies_max_spawn        = 40;//Maximum zombies that can be spawned at onen time.
     level.zombie_speed_multiplier  = 1;//Zombie Speed Multiplier, change to make zombies move faster.
     level.run_animation            = @"pb_run_fast";//Animation used for running movement.
     level.walk_animation           = "pb_walk_forward_mg";//Animation used for walking movement.

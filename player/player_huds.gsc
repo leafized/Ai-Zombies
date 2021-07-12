@@ -56,30 +56,10 @@ hud_health()//CreateBotWave()
     self.oma_counter = CreateIcon("CENTER", "BOTTOMRIGHT",4,-35,28,28,"hud_grenadeicon",1,.01);
     self.oldKills    = 0;
     self.calcKills   = 0;
-    
+    self thread watchKills();
     while(1)
     {
         self.moneyCounter _setText("^2$^7 " + self.score);
-        if(self.oldKills != self.kills)
-        {
-            if(self.calcKills < 100)
-            {
-                self.calcKills++;
-            }
-            
-            self.oma_counter FadeOverTime( .1 );
-            self.oma_counter.alpha = self getChallengePercent();
-            if( self getChallengePercent() == 1 && self.hasStreak == false)
-            {
-                self.hasStreak = true;
-                self IPrintLnBold( "Press ^3[{+frag}] ^7and ^3[{+melee}] ^7to activate Grenade Powerup!" );
-                self thread monitorKillstreak();
-            }
-            self.oldKills = self.kills;
-            self.moneyCounter _setText("^2$^7 " + self.score);
-            self.moneyCounter getBig();
-            self.moneyCounter getSmall();
-        }
         if((isDefined(level.IntermissionTime)) && (level.IntermissionTime > 0))
         {
             self.intermissionTimer setText(game["strings"]["MP_HORDE_BEGINS_IN"]);

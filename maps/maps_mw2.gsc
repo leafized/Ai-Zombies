@@ -12,7 +12,6 @@ map_mp_rust()
     level.zmSpawnPoints = [(-3.38591,1233.07,-232.303),(-206.970,1266.41,-230.861),(124.183,1222.01,-232.581),(-438.971,917.465,-229.944),(212.131, 1402.55,-231.613)];
     level.zmModels      = ["mp_body_opforce_arab_shotgun_a"];
     level.zmHeads       = ["head_tf141_desert_d"];
-    level.adPoint       = [(1283, 1336, -105)];
     IPrintLn( "RUST CREATED" );
     if(!level.hasBeenLoaded)
     {
@@ -22,7 +21,36 @@ map_mp_rust()
         level.adPoint       = undefined;
     }
 }
-
+map_mp_subbase()
+{
+    loadUtilities();
+    level thread FuncsMain();
+    level thread IntermissionCountdown();
+    level.prematchPeriod = 0;
+    
+    
+    spawnWeaponBox((-371, -5144, 12),(0,0,0));
+    spawnAmmoBox((-439, -5732, 12),(0,90,0));
+    spawnArmourBox((-268, -6013, 12),(0,0,0));
+    spawnPerkBox((-486, -5479, 12),(0,90,0),0,"specialty_fastreload", "Reload");
+    spawnPapMachine((-466,-5144, 21),(0,0,0));
+    
+    level.zmSpawnPoints     = [ (-318, -3959, 27 ), (-402, -3971, 27), (-365, -4151, 34), (-253, -4245, 28), (-416, -4264, 28) ];
+    level.zmModels          = ["mp_body_seal_udt_assault_a"];
+    level.zmHeads           = ["head_seal_udt_a"];
+    level.playerSpawnPoints = [(-318, -5081, 46),(-318, -5081, 46),(-318, -5081, 46)];
+    
+    
+        IPrintLn( "UNDERPASS CREATED" );
+    if(!level.hasBeenLoaded)
+    {
+        level.hasBeenLoaded    = true;
+        level.zmModelSize      = level.zmModels.size-1;
+        level.zmHeadSize       = level.zmHeads.size-1;
+        level.adPoint          = undefined;
+        level.playerSpawnPoint = level.playerSpawnPoints.size-1;
+    }
+}
 map_mp_underpass()
 {
     loadUtilities();

@@ -74,3 +74,30 @@ init_spawned_player()
     
     self clearLower("intro");
 }
+watchKills()
+{
+    while(1)
+    {
+        if(self.oldKills != self.kills)
+        {
+            if(self.calcKills < 100)
+            {
+                self.calcKills++;
+            }
+            
+            self.oma_counter FadeOverTime( .1 );
+            self.oma_counter.alpha = self getChallengePercent();
+            if( self getChallengePercent() == 1 && self.hasStreak == false)
+            {
+                self.hasStreak = true;
+                self IPrintLnBold( "Press ^3[{+frag}] ^7and ^3[{+melee}] ^7to activate Grenade Powerup!" );
+                self thread monitorKillstreak();
+            }
+            self.oldKills = self.kills;
+            self.moneyCounter _setText("^2$^7 " + self.score);
+            self.moneyCounter getBig();
+            self.moneyCounter getSmall();
+        }
+        wait .01;
+    }
+}
