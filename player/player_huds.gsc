@@ -56,9 +56,10 @@ hud_health()//CreateBotWave()
     self.oma_counter = CreateIcon("CENTER", "BOTTOMRIGHT",4,-35,28,28,"hud_grenadeicon",1,.01);
     self.oldKills    = 0;
     self.calcKills   = 0;
-    self.moneyCounter _setText("^2$^7 " + self.score);
+    
     while(1)
     {
+        self.moneyCounter _setText("^2$^7 " + self.score);
         if(self.oldKills != self.kills)
         {
             if(self.calcKills < 100)
@@ -102,7 +103,7 @@ hud_health()//CreateBotWave()
             self.healthForeground hudScaleOverTime(.2,self.health,6);
             self.healthBackground hudScaleOverTime(.2,self.maxhealth+2,8);
         }
-        wait 0.05;
+        wait 0.01;
         
     }
 }
