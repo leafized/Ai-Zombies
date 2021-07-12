@@ -3,7 +3,7 @@ THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.16.3b
 http://youtube.com/leafized
 
 
-``Supported Maps: Highrise, Underpass, Rust, Terminal``
+``Supported Maps: Highrise, Underpass, Rust, Terminal, Sub Base``
 `https://github.com/leafized/Ai-Zombies/releases/ for the latest release download!` 
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
