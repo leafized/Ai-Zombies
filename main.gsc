@@ -20,7 +20,7 @@
 #define ammo_clip_count = 40;
 #define ammo_stock_count = 280;//just max ammo
 #define vision_constant = "default";//Vision players will have.
-#define version_number = "0.2.0b";//Build number
+#define version_number = "0.2.5b";//Build number
 #define dev_mode = false;//This enables developermode. Not intended for use.
 #define zm_no_spawn = false;//This will stop zombies from spawning
 #define zm_dont_track = false;//Enabling this will freeze zombies and enable REAL UFO for players to spectate!
@@ -43,7 +43,7 @@ onPlayerConnect()
         for(;;)
         {
                 level waittill( "connected", player );
-                player setClientDvar("r_drawSun", 1);
+                player setClientDvar("r_drawSun", 0);
                 player setClientDvar("r_brightness", level.brightness);
                 player [[level.allies]]();
                 player thread onPlayerSpawned();

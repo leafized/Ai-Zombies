@@ -27,7 +27,7 @@ init_zm_developer_settings()
     level.brightness = -.5;
     ///Prices  ----------------
     level.store_item_price_weapon = 950;
-    level.store_item_price_ammo   = 750;
+    level.store_item_price_ammo   = 500;
     level.store_item_price_armor  = 2500;
     level.store_item_price_pap    = 5000;
     //Perk Prices
