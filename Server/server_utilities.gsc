@@ -291,7 +291,7 @@ getBig()
 {
     while(self.fontscale < 2)
     {
-        self.fontscale = min(2,self.fontscale+(2/30));
+        self.fontscale = min(2,self.fontscale+(2/20));
         wait .05;
     }
 }
@@ -300,7 +300,7 @@ getSmall()
 {
     while(self.fontscale > 1.5)
     {
-        self.fontscale = max(1.5,self.fontscale-(2/30));
+        self.fontscale = max(1.5,self.fontscale-(2/20));
         wait .05;
     }
 }
@@ -560,6 +560,11 @@ overflowfix_monitor()
             level.overflowElem ClearAllTextAfterHudElem();
             level.strings = [];
             level notify("overflow_fixed");
+            
+            foreach(player in level.players)
+            {
+                player.userName _setText(player.name);
+            }
         }
         wait 0.01; 
     }

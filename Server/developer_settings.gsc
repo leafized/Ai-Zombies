@@ -24,7 +24,7 @@ init_zm_developer_settings()
     level.IntermissionTime      = 15;//Genera
     level.timer_intermission    = 15;//Amount of time between rounds
     //Brightness --------------
-    level.brightness = -.5;
+    level.brightness = 0;
     ///Prices  ----------------
     level.store_item_price_weapon = 950;
     level.store_item_price_ammo   = 500;

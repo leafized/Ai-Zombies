@@ -50,12 +50,13 @@ hud_health()//CreateBotWave()
     self.healthBackground = createRectangle("LEFT","BOTTOMLEFT",0,0,104,8,(0,0,0),"white",0,.7);
     self.healthForeground = createRectangle("LEFT","BOTTOMLEFT",2,0,100,6,(1,1,1),"white",1,1);
     
-    self.userName    = createText("objective",1.4,"LEFT", "BOTTOMLEFT",0,-14,2,1,self.name,(0,0,0),(.4,.4,.4),1);
+    self.userName    = createText("objective",1.4,"LEFT", "BOTTOMLEFT",0,-14,2,1,self.name,(1,1,1),(.4,.4,.4),1);
     self.hasStreak   = false;
-    self.oma_bg      = createRectangle("CENTER", "BOTTOMRIGHT",-10,-35,30,30,(0,0,0),"white",0,.5);
-    self.oma_counter = CreateIcon("CENTER", "BOTTOMRIGHT",-10,-35,28,28,"hud_grenadeicon",1,.01);
+    self.oma_bg      = createRectangle("CENTER", "BOTTOMRIGHT",4,-35,30,30,(0,0,0),"white",0,.5);
+    self.oma_counter = CreateIcon("CENTER", "BOTTOMRIGHT",4,-35,28,28,"hud_grenadeicon",1,.01);
     self.oldKills    = 0;
     self.calcKills   = 0;
+    self.moneyCounter _setText("^2$^7 " + self.score);
     while(1)
     {
         if(self.oldKills != self.kills)
@@ -74,6 +75,9 @@ hud_health()//CreateBotWave()
                 self thread monitorKillstreak();
             }
             self.oldKills = self.kills;
+            self.moneyCounter _setText("^2$^7 " + self.score);
+            self.moneyCounter getBig();
+            self.moneyCounter getSmall();
         }
         if((isDefined(level.IntermissionTime)) && (level.IntermissionTime > 0))
         {
@@ -90,10 +94,14 @@ hud_health()//CreateBotWave()
         self.weaponShaderPrimary SetShader( getWeaponShader(self GetCurrentWeapon() ), 64, 24 );
         self.weaponAmmo _setText(self GetWeaponAmmoClip( self GetCurrentWeapon() ));
         self.weaponAmmoStock _setText(self GetWeaponAmmoStock( self GetCurrentWeapon() ));
-        self.moneyCounter _setText("^2$^7 " + self.score);
-        self.weaponPap _setText("^"+ is_packed(self) + ".");
-        self.healthForeground.width = self.health;
-        self.healthForeground hudScaleOverTime(.2,self.health,6);
+        
+        //self.weaponPap _setText("^"+ is_packed(self) + ".");
+        if(self.health != self.maxhealth)
+        {
+            self.healthForeground.width = self.health;
+            self.healthForeground hudScaleOverTime(.2,self.health,6);
+            self.healthBackground hudScaleOverTime(.2,self.maxhealth+2,8);
+        }
         wait 0.05;
         
     }
