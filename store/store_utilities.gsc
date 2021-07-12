@@ -1,7 +1,7 @@
 onplayerdamage( einflictor, eattacker, idamage, idflags, smeansofdeath, sweapon, vpoint, vdir, shitloc, psoffsettime )
 {
     if(IsPlayer( eattacker ))
-    self.health = 100;
+    einflictor.health = 100;
 }
 SetEntHeadIcon(offset,shader,keepPosition )
 {
