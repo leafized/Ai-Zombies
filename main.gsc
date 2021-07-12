@@ -33,7 +33,6 @@
      level precacheItems();
     level thread onPlayerConnect();
     level.onPlayerDamage = ::onPlayerDamage;
-    SetDvar("ui_gametype", "^6AI Zombies by Leafized!");
     #ifdef STEAM
         zoneEdits();
     #endif

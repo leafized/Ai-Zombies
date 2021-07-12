@@ -20,22 +20,22 @@ init_zm_developer_settings()
     //Ammo Drop ---------------
     level.AmmoDrop = undefined;
     //Intermission Timer ------
-    level.IntermissionTimeStart = 20;//can change (is the beginning timer)
-    level.IntermissionTime      = 20;//Genera
-    level.timer_intermission    = 15;//Amount of time between rounds
+    level.IntermissionTimeStart = 30;//can change (is the beginning timer)
+    level.IntermissionTime      = 30;//Genera
+    level.timer_intermission    = 30;//Amount of time between rounds
     //Brightness --------------
     level.brightness = 0;
     ///Prices  ----------------
-    level.store_item_price_weapon = 2000;
-    level.store_item_price_ammo   = 1500;
-    level.store_item_price_armor  = 4000;
-    level.store_item_price_pap    = 7500;
+    level.store_item_price_weapon = 950;
+    level.store_item_price_ammo   = 750;
+    level.store_item_price_armor  = 2500;
+    level.store_item_price_pap    = 5000;
     //Perk Prices
-    level.store_item_price_perk["Reload"] = 2000;
+    level.store_item_price_perk["Reload"] = 3000;
     //Player Variables --------------
     if(level.developer_mode == true)
     level.player_starting_money = 9999999;
-    else level.player_starting_money = 500;
+    else level.player_starting_money = 1250;
     //Shaders ------------------------
     level.shader_store["BOX"] = "cardicon_treasurechest";
     level.shader_store["AMMO"] = "cardicon_bullets_50cal";
