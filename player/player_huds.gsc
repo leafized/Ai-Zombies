@@ -52,8 +52,8 @@ hud_health()//CreateBotWave()
     
     self.userName    = createText("objective",1.4,"LEFT", "BOTTOMLEFT",0,-14,2,1,self.name,(0,0,0),(.4,.4,.4),1);
     self.hasStreak   = false;
-    self.oma_bg      = createRectangle("CENTER", "BOTTOMRIGHT",18,-35,30,30,(0,0,0),"white",0,.5);
-    self.oma_counter = CreateIcon("CENTER", "BOTTOMRIGHT",18,-35,28,28,"hud_grenadeicon",1,.01);
+    self.oma_bg      = createRectangle("CENTER", "BOTTOMRIGHT",-10,-35,30,30,(0,0,0),"white",0,.5);
+    self.oma_counter = CreateIcon("CENTER", "BOTTOMRIGHT",-10,-35,28,28,"hud_grenadeicon",1,.01);
     self.oldKills    = 0;
     self.calcKills   = 0;
     while(1)
