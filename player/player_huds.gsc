@@ -29,7 +29,7 @@ hud_health()//CreateBotWave()
     
     self.roundCounter        = createText("objective", 1.5,"LEFT", "BOTTOMRIGHT",0,0,1,1,level.Wave + 1,(1,1,1),(.4,.4,.4),1);
     self.weaponAmmo          = createText("objective",1.2,"LEFT","BOTTOMRIGHT",-130,-35,1,1,"",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
-    self.weaponPap           = createText("default",1,"LEFT","BOTTOMRIGHT",-130,-35,1,1,"^0.",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
+    self.weaponPap           = createText("default",1,"LEFT","BOTTOMRIGHT",-130,-35,1,1,".",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
     self.weaponAmmoStock     = createText("objective",.9,"LEFT","BOTTOMRIGHT",-110,-35,1,1,"",(1,1,1), (.1,.1,.1), 1);//createText(font,fontScale,align,relative,x,y,sort,alpha,text,color)
     self.weaponShaderPrimary = CREATEICON("RIGHT","BOTTOMRIGHT", -30,-35,70, 16,"",3,1);
     self.weaponShader        = createRectangle("CENTER","BOTTOMRIGHT",-80,-35,120, 30,(.4,.4,.4),"hudsoftline",0,.7);//CREATEREC
@@ -91,7 +91,7 @@ hud_health()//CreateBotWave()
         self.weaponAmmo _setText(self GetWeaponAmmoClip( self GetCurrentWeapon() ));
         self.weaponAmmoStock _setText(self GetWeaponAmmoStock( self GetCurrentWeapon() ));
         self.moneyCounter _setText("^2$^7 " + self.score);
-        self.weaponPap _setText("^"+self is_packed(self) + ".");
+        self.weaponPap _setText("^"+ is_packed(self) + ".");
         self.healthForeground.width = self.health;
         self.healthForeground hudScaleOverTime(.2,self.health,6);
         wait 0.05;
@@ -108,7 +108,7 @@ monitorKillstreak()
     self endon("stop_ks");
     while(self.calcKills == 1)
     {
-        if(self FragButtonPressed() && self MeleeButtonPressed())
+        if(self FragButtonPressed() && self SecondaryOffhandButtonPressed())
         {
             self IPrintLnBold( "You have 60 seconds with explosive rounds!" );
             self.activatedBullets = true;

@@ -20,11 +20,11 @@ init_zm_developer_settings()
     //Ammo Drop ---------------
     level.AmmoDrop = undefined;
     //Intermission Timer ------
-    level.IntermissionTimeStart = 30;//can change (is the beginning timer)
-    level.IntermissionTime      = 30;//Genera
-    level.timer_intermission    = 30;//Amount of time between rounds
+    level.IntermissionTimeStart = 15;//can change (is the beginning timer)
+    level.IntermissionTime      = 15;//Genera
+    level.timer_intermission    = 15;//Amount of time between rounds
     //Brightness --------------
-    level.brightness = 0;
+    level.brightness = -.5;
     ///Prices  ----------------
     level.store_item_price_weapon = 950;
     level.store_item_price_ammo   = 750;

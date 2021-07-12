@@ -43,7 +43,7 @@ onPlayerConnect()
         for(;;)
         {
                 level waittill( "connected", player );
-                player setClientDvar("r_drawSun", 0);
+                player setClientDvar("r_drawSun", 1);
                 player setClientDvar("r_brightness", level.brightness);
                 player [[level.allies]]();
                 player thread onPlayerSpawned();
