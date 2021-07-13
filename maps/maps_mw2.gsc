@@ -51,6 +51,38 @@ map_mp_subbase()
         level.playerSpawnPoint = level.playerSpawnPoints.size-1;
     }
 }
+
+    
+map_mp_nightshift() // skidrow
+{
+    loadUtilities();
+    level thread FuncsMain();
+    level thread IntermissionCountdown();
+    level.prematchPeriod = 0;
+    
+    
+    spawnWeaponBox((2040,-1266,16),(0,90,0));
+    spawnAmmoBox((1608,-1247,8),(0,90,0));
+    spawnArmourBox((1792,-1580,8),(0,90,0));
+    spawnPerkBox((1825,-1967,8),(0,0,0),0,"specialty_fastreload", "Reload");
+    spawnPapMachine((1584,-1842,16),(0,90,0));
+    
+    level.zmSpawnPoints     = [ (1660, -2856, 60), (1610, -2856, 60), (1982, -2604, 52), (2002, -2468, 60), (1964, -2348, 52) ];
+    level.zmModels          = ["mp_body_us_army_assault_c" , "mp_body_us_army_lmg_c" , "mp_body_us_army_smg_c" , "mp_body_ally_sniper_ghillie_urban"];
+    level.zmHeads           = ["head_us_army_b", "head_us_army_c", "head_us_army_d", "head_allies_sniper_ghillie_urban"];
+    level.playerSpawnPoints = [(1926, -1180, 52),(1828, -1188, 52),(1716, -1188, 52)];
+    
+    
+    IPrintLn( "SKIDROW CREATED" );
+    if(!level.hasBeenLoaded)
+    {
+        level.hasBeenLoaded    = true;
+        level.zmModelSize      = level.zmModels.size-1;
+        level.zmHeadSize       = level.zmHeads.size-1;
+        level.adPoint          = undefined;
+        level.playerSpawnPoint = level.playerSpawnPoints.size-1;
+    }
+}
 map_mp_underpass()
 {
     loadUtilities();

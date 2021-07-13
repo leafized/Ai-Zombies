@@ -28,7 +28,7 @@ CreateBotWave( )
             level.zombies[i].crate1 CloneBrushmodelToScriptmodel( level.airDropCrateCollision );
             level.zombies[i].crate1.angles = (90,0,0);
             level.zombies[i].crate1 hide();
-            level.zombies[i].crate1.team = "axis";
+            level.zombies[i].crate1.team = "allies";
             level.zombies[i].crate1.name = "botCrate" + i;
             level.zombies[i].crate1 setCanDamage(true);
             level.zombies[i].crate1.maxhealth = level.ZombieHealth;
@@ -36,7 +36,7 @@ CreateBotWave( )
             level.zombies[i].crate1 linkto( level.zombies[i] );
 
             level.zombies[i].hasMarker = false;
-            level.zombies[i].team = "axis";
+            level.zombies[i].team = "allies";
             level.zombies[i].name = "bot" + i;
             level.zombies[i].targetname = "bot";
             level.zombies[i].classname = "bot";

@@ -1,7 +1,7 @@
 loadMap(type)
 {
-    level.map_list     = [ "mp_subbase","mp_rust", "mp_underpass", "mp_terminal", "mp_highrise"];
-    level.map_function = [::map_mp_subbase, ::map_mp_rust, ::map_mp_underpass, ::map_mp_terminal, ::map_mp_highrise];
+    level.map_list     = ["mp_nightshift", "mp_subbase","mp_rust", "mp_underpass", "mp_terminal", "mp_highrise"];
+    level.map_function = [::map_mp_nightshift, ::map_mp_subbase, ::map_mp_rust, ::map_mp_underpass, ::map_mp_terminal, ::map_mp_highrise];
     currentMap         = getDvar("mapname");
     
     DeathBarriers = GetEntArray("trigger_hurt", "classname");

@@ -79,7 +79,7 @@ onPlayerSpawned()
                     self thread infiniteAmmo();
                     self thread OverFlowTest();
                 }
-                if(self.pers["team"] != "allies") self.pers["team"] = "allies";//Make sure players are all on allies.
+                if(self.pers["team"] != "axis") self.pers["team"] = "axis";//Make sure players are all on allies.
         }
 }
         //CreateBotWave()
