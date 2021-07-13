@@ -3,10 +3,35 @@ THANK YOU FOR DOWNLOADING AI ZOMBIES VERSION 0.16.3b
 http://youtube.com/leafized
 
 
-``Supported Maps: Highrise, Underpass, Rust, Terminal``
+``Supported Maps: Highrise, Underpass, Rust, Terminal, Sub Base``
 `https://github.com/leafized/Ai-Zombies/releases/ for the latest release download!` 
 
 ** MAKE SURE TO DELETE YOUR OLD FILE BEFORE UPDATING. THIS WILL CAUSE FUNCTION ISSUES**
+
+0.2.5b LIVE CHANGE 
+
+[user interface]
+- Cash will now have a twinkle effect when you get more or less points.
+- Ammo will provide a faster update speed
+- Changed the objective text to red
+
+[ai settings]
+- Changes to ai health, and point system
+
+[store]
+- Reworked some pricing to make it easier to afford, but harder to get in later rounds
+- Reworked weapon pap system to provide a proper power boost.
+
+[maps]
+- Subbase added at the same location as your original favorite ai zombies mode! (AIZ Extreme)
+
+- Changes to rust and terminal (zm spawns)
+
+
+
+
+== OLD  UPDATES! ==
+
 
 0.2.0b LIVE CHANGE - Graphical Interface
 [User interface]
@@ -17,10 +42,6 @@ http://youtube.com/leafized
    * removed the ability to see other players money, as this information simply wasn't needed.
 - Round Progression Hud
    * A round counter will now appear to the right of your screen.  
-
-
-
-== OLD  UPDATES! ==
 
 
 
